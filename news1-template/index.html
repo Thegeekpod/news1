@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>নিউজ১ - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal</title>
+  <meta name="description"
+    content="নিউজ১ বাংলা সংবাদের সবচেয়ে নির্ভরযোগ্য ডিজিটাল পোর্টাল। জানুন রাজ্য, দেশ, আন্তর্জাতিক, খেলাধুলো, বিনোদন ও লাইফস্টাইলের সর্বশেষ খবর।">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Top Utilities Bar -->
+  <div class="topbar">
+    <div class="container topbar-wrapper">
+      <div class="topbar-left">
+        <div class="topbar-item">
+          <i class="far fa-calendar-alt"></i>
+          <span id="current-bengali-date">বৃহস্পতিবার, ৩০ জুলাই ২০২৬</span>
+        </div>
+        <div class="topbar-item">
+          <i class="fas fa-cloud-sun"></i>
+          <span>কলকাতা ৩২°C (রৌদ্রোজ্জ্বল)</span>
+        </div>
+        <a href="#live" class="live-tv-badge">
+          <span class="pulse-dot"></span> লাইভ টিভি
+        </a>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-item">
+          <span style="font-size: 0.8rem; margin-right: 4px;">লেখা:</span>
+          <button class="font-size-btn" id="btn-font-decrease" title="ছোট হরফ">A-</button>
+          <button class="font-size-btn" id="btn-font-reset" title="স্বাভাবিক হরফ">A</button>
+          <button class="font-size-btn" id="btn-font-increase" title="বড় হরফ">A+</button>
+        </div>
+        <button class="theme-toggle-btn">
+          <i class="fas fa-moon"></i>
+          <span class="theme-label">ডার্ক মোড</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header & Brand Logo -->
+  <header class="main-header">
+    <div class="container header-wrapper">
+      <a href="index.html" class="brand-logo">
+        <img src="logo.png" alt="NEWS 1 Logo" class="site-logo-img">
+      </a>
+      <div class="header-actions">
+        <button class="search-trigger-btn">
+          <i class="fas fa-search"></i>
+          <span>সন্ধান করুন...</span>
+        </button>
+        <button class="bookmark-drawer-btn">
+          <i class="fas fa-bookmark"></i>
+          <span>সংরক্ষিত খবর</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Navigation Bar -->
+  <nav class="cat-navbar">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">প্রচ্ছদ</a></li>
+        <li><a href="category.html" class="nav-link">রাজ্য</a></li>
+        <li><a href="category.html" class="nav-link">দেশ</a></li>
+        <li><a href="category.html" class="nav-link">আন্তর্জাতিক</a></li>
+        <li><a href="category.html" class="nav-link">খেলাধুলো</a></li>
+        <li><a href="category.html" class="nav-link">বিনোদন</a></li>
+        <li><a href="category.html" class="nav-link">টেকনোলজি</a></li>
+        <li><a href="category.html" class="nav-link">লাইফস্টাইল</a></li>
+        <li><a href="category.html" class="nav-link">ভিডিও</a></li>
+        <li><a href="category.html" class="nav-link">আবহাওয়া</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Breaking News Live Ticker Bar -->
+  <div class="breaking-ticker-bar">
+    <div class="container ticker-wrapper">
+      <div class="ticker-label">
+        <i class="fas fa-bolt"></i> জরুরি খবর
+      </div>
+      <div class="ticker-content">
+        <a href="article.html" class="ticker-item">
+          <span class="ticker-dot"></span> রাজ্যজুড়ে সবুজ শক্তি প্রসারে নতুন সৌর বিদ্যুৎ নীতি ঘোষণা রাজ্য সরকারের
+        </a>
+        <a href="article.html" class="ticker-item">
+          <span class="ticker-dot"></span> টি-২০ বিশ্বকাপে রোমাঞ্চকর জয় ভারতের, বিশ্বজুড়ে ক্রিকেটপ্রেমীদের উদযাপন
+        </a>
+        <a href="article.html" class="ticker-item">
+          <span class="ticker-dot"></span> ভারতীয় শেয়ার বাজারে নতুন ইতিহাস, সেনসেক্স স্পর্শ করল ৮২ হাজার পয়েন্টের
+          মাইলফলক
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="container main-content-layout">
+
+    <!-- Primary Feed Column -->
+    <div class="main-feed-column">
+
+      <!-- Hero News Grid -->
+      <section class="hero-news-grid">
+        <div class="hero-main-card"
+          style="height: 440px; padding: 0; overflow: hidden; background: #000; position: relative; border-radius: var(--radius-md); border: 2px solid var(--brand-red);">
+          <!-- Youtube / Facebook Video Embed Player -->
+          <iframe id="hero-video-frame" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&enablejsapi=1"
+            title="নিউজ১ লাইভ ভিডিও বুলেটিন"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen style="width: 100%; height: 100%; border: 0; display: block;"></iframe>
+
+          <!-- Live Video Stream Badges Bar -->
+          <div
+            style="position: absolute; top: 12px; left: 12px; z-index: 10; display: flex; gap: 8px; pointer-events: none;">
+            <span class="cat-tag"
+              style="background: linear-gradient(135deg, #dc2626, #b91c1c); font-size: 0.8rem; box-shadow: 0 2px 8px rgba(220,38,38,0.5);">
+              <i class="fab fa-youtube"></i> ইউটিউব লাইভ
+            </span>
+            <span class="cat-tag"
+              style="background: linear-gradient(135deg, #1877f2, #1d4ed8); font-size: 0.8rem; box-shadow: 0 2px 8px rgba(24,119,242,0.5);">
+              <i class="fab fa-facebook-f"></i> ফেসবুক বুলেটিন
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-secondary-stack">
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=400&q=80"
+                alt="অর্থনীতি">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">রিজার্ভ ব্যাঙ্কের নতুন নীতিতে কমতে পারে হোম লোনের সুদের
+                  হার</a></h3>
+              <div class="card-meta">
+                <span>অর্থনীতি</span> • <span>৪০ মিনিট আগে</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=400&q=80"
+                alt="খেলা">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">অস্ট্রেলিয়া সিরিজের আগে ইডেন গার্ডেন্সে কঠোর অনুশীলন ভারতীয়
+                  দলের</a></h3>
+              <div class="card-meta">
+                <span>খেলা</span> • <span>১ ঘণ্টা আগে</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80"
+                alt="টেক">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">ভারতে উন্মোচিত হল দেশীয় এআই চিপসেট, প্রযুক্তিক্ষেত্রে নতুন
+                  মাইলফলক</a></h3>
+              <div class="card-meta">
+                <span>টেকনোলজি</span> • <span>২ ঘণ্টা আগে</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. State & National News Block -->
+      <section class="category-section-container theme-state">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-newspaper"></i> রাজ্য ও দেশের খবর</h2>
+          <a href="category.html" class="view-all-link">সব খবর দেখুন <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cards-2col-grid">
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?auto=format&fit=crop&w=600&q=80"
+                alt="কলকাতা সংবাদ">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start;">কলকাতা</span>
+              <h3 class="card-title"><a href="article.html">কলকাতায় চালু হল ই-বাসের নতুন রুট, যানজট কমাতে বিশেষ ট্রাফিক
+                  পরিকল্পনা</a></h3>
+              <p class="card-excerpt">শহরের বায়ুদূষণ কমাতে ও সাধারণ মানুষের যাতায়াত সহজ করতে পরিবহন দপ্তর আরও ৫০টি
+                ব্যাটারিচালিত আধুনিক বাস নামাল রাস্তায়...</p>
+              <div class="card-meta" style="margin-top: auto; justify-content: space-between;">
+                <span><i class="far fa-clock"></i> ৩ ঘণ্টা আগে</span>
+                <button class="save-article-btn" data-title="কলকাতায় চালু হল ই-বাসের নতুন রুট" data-url="article.html">
+                  <i class="far fa-bookmark"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80"
+                alt="জাতীয় সংবাদ">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start;">জাতীয়</span>
+              <h3 class="card-title"><a href="article.html">সংসদে পেশ হল নতুন ডিজিটাল নিরাপত্তা বিল, সুরক্ষিত হবে
+                  নাগরিকের তথ্য</a></h3>
+              <p class="card-excerpt">সাইবার অপরাধ প্রতিরোধে কেন্দ্র সরকারের কড়া আইনি পদক্ষেপ। প্রযুক্তি বিশেষজ্ঞদের মতে
+                দেশের ডিজিটাল কাঠামো শক্তিশালী হবে...</p>
+              <div class="card-meta" style="margin-top: auto; justify-content: space-between;">
+                <span><i class="far fa-clock"></i> ৪ ঘণ্টা আগে</span>
+                <button class="save-article-btn" data-title="সংসদে পেশ হল নতুন ডিজিটাল নিরাপত্তা বিল"
+                  data-url="article.html">
+                  <i class="far fa-bookmark"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 2. Sports News Block -->
+      <section class="category-section-container theme-sports">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-running"></i> খেলাধুলো (Sports)</h2>
+          <a href="category.html" class="view-all-link">স্পোর্টস বুলেটিন <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cards-2col-grid">
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=300&q=80"
+                alt="ক্রিকেট">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">শুভমন গিলের দুর্দান্ত সেঞ্চুরি, শতরান হাঁকিয়ে রেকর্ড বইয়ে
+                  নাম তুললেন তরুণ তারকা</a></h3>
+              <div class="card-meta">ক্রিকেট • ২ ঘণ্টা আগে</div>
+            </div>
+          </div>
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=300&q=80"
+                alt="ফুটবল">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">আইএসএলে ইস্টবেঙ্গল ও মোহনবাগানের বড় জয়, খেতাবের দৌড়ে জমজমাট
+                  লড়াই</a></h3>
+              <div class="card-meta">ফুটবল • ৫ ঘণ্টা আগে</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Video News Gallery Section (Dark Aesthetic) -->
+      <section class="dark-section-banner">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-play-circle"></i> নিউজ১ ভিডিও গ্যালারি</h2>
+          <a href="category.html" class="view-all-link" style="color: #f43f5e;">সব ভিডিও দেখুন <i
+              class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="video-grid">
+
+          <div class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="video-thumb-box">
+              <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80"
+                alt="ভিডিও ১">
+              <div class="play-btn-overlay">
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="video-title">দার্জিলিং পাহাড়ে নতুন পর্যটন কেন্দ্র উদ্বোধন, দেখুন এক্সক্লুসিভ গ্রাউন্ড রিপোর্ট
+            </div>
+          </div>
+
+          <div class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="video-thumb-box">
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80"
+                alt="ভিডিও ২">
+              <div class="play-btn-overlay">
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="video-title">কৃত্রিম বুদ্ধিমত্তা কীভাবে পাল্টাচ্ছে ভবিষ্যৎ চাকরির বাজার? বিশেষজ্ঞদের মতামত</div>
+          </div>
+
+          <div class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+            <div class="video-thumb-box">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80"
+                alt="ভিডিও ৩">
+              <div class="play-btn-overlay">
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+              </div>
+            </div>
+            <div class="video-title">টলিউডের নতুন সিনেমার শুটিং সেটে একদিন: স্টারদের আড্ডা ও অভিজ্ঞতা</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. International News Block -->
+      <section class="category-section-container theme-world">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-globe-americas"></i> আন্তর্জাতিক খবর (World News)</h2>
+          <a href="category.html" class="view-all-link">বিশ্বসংবাদ দেখুন <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cards-2col-grid">
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80"
+                alt="আন্তর্জাতিক ১">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #2563eb;">বিশ্ব রাজনীতি</span>
+              <h3 class="card-title"><a href="article.html">জাতিসংঘের বিশ্ব জলবায়ু সম্মেলনে ঐতিহাসিক জলবায়ু চুক্তি
+                  স্বাক্ষরিত</a></h3>
+              <p class="card-excerpt">কার্বন নিঃসরণ কমাতে একজোটে সম্মতি দিল বিশ্বের ১৫০টিরও বেশি রাষ্ট্র। সবুজ জ্বালানি
+                ব্যবহারে বিশেষ তহবিল গঠন...</p>
+              <div class="card-meta" style="margin-top: auto; justify-content: space-between;">
+                <span><i class="far fa-clock"></i> ২ ঘণ্টা আগে</span>
+                <button class="save-article-btn" data-title="জাতিসংঘের বিশ্ব জলবায়ু চুক্তি" data-url="article.html"><i
+                    class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80"
+                alt="আন্তর্জাতিক ২">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #2563eb;">মহাকাশ</span>
+              <h3 class="card-title"><a href="article.html">নাসার নতুন স্পেস টেলিস্কোপ পাঠাল সুদূর ছায়াপথের নতুন
+                  আলোকচিত্র</a></h3>
+              <p class="card-excerpt">মহাবিশ্বের সৃষ্টি রহস্য উদ্ঘাটনে আরও এক ধাপ এগিয়ে গেলেন বিশ্বের শীর্ষস্থানীয়
+                জ্যোতির্বিজ্ঞানীরা...</p>
+              <div class="card-meta" style="margin-top: auto; justify-content: space-between;">
+                <span><i class="far fa-clock"></i> ৪ ঘণ্টা আগে</span>
+                <button class="save-article-btn" data-title="নাসার নতুন স্পেস টেলিস্কোপ আলোকচিত্র"
+                  data-url="article.html"><i class="far fa-bookmark"></i></button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 5. Entertainment & Cinema Block -->
+      <section class="category-section-container theme-entertainment">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-film"></i> বিনোদনের দুনিয়া (Entertainment)</h2>
+          <a href="category.html" class="view-all-link">বিনোদন জগত <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="entertainment-grid">
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=400&q=80"
+                alt="টলিউড">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #d97706;">টলিউড</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">পূজোর বড় পর্দায় আসছে নতুন থ্রিলার
+                  ছবি, প্রকাশিত হল বহু প্রতীক্ষিত টিজার</a></h3>
+              <div class="card-meta" style="margin-top: auto;">৩ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=400&q=80"
+                alt="বলিউড">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #d97706;">বলিউড</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">বক্স অফিসে ২০০ কোটির ক্লাবে নতুন
+                  অ্যাকশন সিনেমা, রেকর্ড ভাঙল প্রথম সপ্তাহেই</a></h3>
+              <div class="card-meta" style="margin-top: auto;">৫ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80"
+                alt="সঙ্গীত">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #d97706;">সঙ্গীত</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">কলকাতায় অনুষ্ঠিত হল আন্তর্জাতিক
+                  লাইভ মিউজিক কনসার্ট, মাতল সঙ্গীতপ্রেমীরা</a></h3>
+              <div class="card-meta" style="margin-top: auto;">৬ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 6. Technology & Innovations Block -->
+      <section class="category-section-container theme-tech">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-microchip"></i> টেকনোলজি ও গেজেট (Tech & Innovation)</h2>
+          <a href="category.html" class="view-all-link">টেক আপডেট <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="cards-2col-grid">
+
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=300&q=80"
+                alt="স্মার্টফোন">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">ভারতে লঞ্চ করল নতুন ফাইভ-জি ফোল্ডেবল স্মার্টফোন, জেনে নিন
+                  দাম ও ফিচার</a></h3>
+              <div class="card-meta">গেজেট • ১ ঘণ্টা আগে</div>
+            </div>
+          </div>
+
+          <div class="news-horizontal-card">
+            <div class="card-thumb">
+              <img src="https://images.unsplash.com/photo-1558441719-443b38631ad5?auto=format&fit=crop&w=300&q=80"
+                alt="ইভি গাড়ি">
+            </div>
+            <div>
+              <h3 class="card-title"><a href="article.html">একবার চার্জেই চলবে ৬০০ কিমি! ভারতে আসল নতুন প্রজন্মের
+                  ইলেকট্রিক গাড়ি</a></h3>
+              <div class="card-meta">অটোমোবাইল • ৪ ঘণ্টা আগে</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. Lifestyle & Wellness Block -->
+      <section class="category-section-container theme-lifestyle">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-heartbeat"></i> লাইফস্টাইল ও স্বাস্থ্য (Lifestyle & Wellness)</h2>
+          <a href="category.html" class="view-all-link">লাইফস্টাইল দেখুন <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="entertainment-grid">
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=400&q=80"
+                alt="স্বাস্থ্য">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #10b981;">স্বাস্থ্য টিপস</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">বর্ষায় সুস্থ থাকতে মেনে চলুন এই
+                  ৫টি বিশেষ ডায়েট নিয়ম</a></h3>
+              <div class="card-meta" style="margin-top: auto;">২ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=400&q=80"
+                alt="ভ্রমণ">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #10b981;">ভ্রমণ</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">সপ্তাহান্তের ছুটিতে ঘুরে আসুন
+                  কালিম্পংয়ের অপূর্ব অফবিট পাহাড়ি গ্রামে</a></h3>
+              <div class="card-meta" style="margin-top: auto;">৪ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+          <article class="news-vertical-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=400&q=80"
+                alt="ফুড">
+            </div>
+            <div class="card-body">
+              <span class="cat-tag" style="align-self: flex-start; background: #10b981;">রসনা</span>
+              <h3 class="card-title" style="font-size: 1rem;"><a href="article.html">ঐতিহ্যবাহী মেদিনীপুরী পোস্ত রেসিপি:
+                  খুব সহজেই তৈরি করুন বাড়িতে</a></h3>
+              <div class="card-meta" style="margin-top: auto;">৬ ঘণ্টা আগে</div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Sidebar Column -->
+    <aside class="sidebar">
+
+      <!-- Trending Top 5 Widget -->
+      <div class="widget-box">
+        <h3 class="widget-title">
+          <span><i class="fas fa-fire" style="color: var(--brand-red);"></i> সর্বাধিক পঠিত (Trending)</span>
+        </h3>
+        <div class="trending-list">
+          <div class="trending-item">
+            <span class="trending-rank">১</span>
+            <a href="article.html" class="trending-text">রাজ্য সরকারি কর্মচারীদের জন্য ডিএ বৃদ্ধিতে নতুন নির্দেশিকা
+              জারি</a>
+          </div>
+          <div class="trending-item">
+            <span class="trending-rank">২</span>
+            <a href="article.html" class="trending-text">উচ্চমাধ্যমিক পরীক্ষার ফলাফলে মেধাতালিকায় বাঁকুড়ার ছাত্রের
+              শীর্ষস্থান</a>
+          </div>
+          <div class="trending-item">
+            <span class="trending-rank">৩</span>
+            <a href="article.html" class="trending-text">আইপিএল নিলামে সর্বাধিক দর পেলেন ভারতীয় স্পিনার, তৈরি হল
+              ইতিহাস</a>
+          </div>
+          <div class="trending-item">
+            <span class="trending-rank">৪</span>
+            <a href="article.html" class="trending-text">পুজোর মুখে পর্যটকদের জন্য উত্তরবঙ্গে বিশেষ হেরিটেজ ট্রেন
+              পরিষেবা</a>
+          </div>
+          <div class="trending-item">
+            <span class="trending-rank">৫</span>
+            <a href="article.html" class="trending-text">মহাকাশে ভারতের নতুন কৃত্রিম উপগ্রহ সফলভাবে উৎক্ষেপণ করল
+              ইসরো</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Trending Hashtags & Topics Widget -->
+      <div class="widget-box">
+        <h3 class="widget-title">
+          <span><i class="fas fa-hashtag" style="color: var(--brand-red);"></i> জনপ্রিয় বিষয়বস্তু</span>
+        </h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#কলকাতা_ইবাস</a>
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#অস্ট্রেলিয়া_সিরিজ</a>
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#স্বাস্থ্য_এআই</a>
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#নতুন_প্রযুক্তি</a>
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#উচ্চমাধ্যমিক_ফল</a>
+          <a href="category.html"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px 12px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; display: flex; align-items: center; gap: 4px;">#দার্জিলিং_ভ্রমণ</a>
+        </div>
+      </div>
+
+      <!-- Live City Weather & Forecast Widget -->
+      <div class="widget-box">
+        <h3 class="widget-title">
+          <span><i class="fas fa-cloud-sun" style="color: #0284c7;"></i> শহরের আবহাওয়া</span>
+        </h3>
+        <div class="weather-city-tabs"
+          style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px;">
+          <button class="city-weather-tab active" data-city="kolkata"
+            style="background: var(--brand-red); color: #fff; border: none; padding: 6px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer;">কলকাতা</button>
+          <button class="city-weather-tab" data-city="siliguri"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer;">শিলিগুড়ি</button>
+          <button class="city-weather-tab" data-city="asansol"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer;">আসানসোল</button>
+          <button class="city-weather-tab" data-city="durgapur"
+            style="background: var(--bg-surface-subtle); border: 1px solid var(--border-color); color: var(--text-primary); padding: 6px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; cursor: pointer;">দূর্গাপুর</button>
+        </div>
+        <div id="city-weather-display"
+          style="background: linear-gradient(135deg, #0284c7, #0369a1); color: #fff; padding: 14px; border-radius: var(--radius-md); text-align: center;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="text-align: left;">
+              <span id="weather-city-name" style="font-size: 1.1rem; font-weight: 700;">কলকাতা</span>
+              <div id="weather-condition" style="font-size: 0.85rem; opacity: 0.9;">আংশিক মেঘলা</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i id="weather-icon" class="fas fa-cloud-sun" style="font-size: 2rem; color: #fde047;"></i>
+              <span id="weather-temp" style="font-size: 1.8rem; font-weight: 800;">৩২°C</span>
+            </div>
+          </div>
+          <div
+            style="display: flex; justify-content: space-between; margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.78rem;">
+            <span>বাতাসের আর্দ্রতা: <strong id="weather-humidity">৭৮%</strong></span>
+            <span>বায়ুর গতিবেগ: <strong id="weather-wind">১২ কিমি/ঘণ্টা</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter Subscription Box -->
+      <div class="ad-banner-box"
+        style="background: linear-gradient(135deg, #1e1b4b, #312e81); border: 1px solid var(--border-color);">
+        <div class="ad-title" style="color: #f43f5e;"><i class="fas fa-envelope-open-text"></i> নিউজলেটার</div>
+        <div class="ad-heading" style="font-size: 1.15rem; margin-bottom: 6px;">দৈনিক খবর পান ইমেইলে</div>
+        <p style="font-size: 0.85rem; margin-bottom: 14px; color: #cbd5e1;">প্রতিদিনের প্রধান ব্রেকিং সংবাদ সরাসরি আপনার
+          ইমেইল বক্সে পেতে বিনামূল্যে সাবস্ক্রাইব করুন</p>
+        <form onsubmit="event.preventDefault(); alert('ধন্যবাদ! নিউজ১ নিউজলেটারে সফলভাবে সাবস্ক্রাইব করা হয়েছে।');"
+          style="display: flex; flex-direction: column; gap: 8px;">
+          <input type="email" placeholder="আপনার ইমেইল ঠিকানা লিখুন..." required
+            style="padding: 10px 14px; border-radius: var(--radius-full); border: none; font-family: inherit; font-size: 0.88rem; width: 100%; outline: none; background: #ffffff; color: #0f172a;">
+          <button type="submit" class="ad-btn"
+            style="background: var(--brand-red); color: #fff; border: none; cursor: pointer; padding: 10px; font-weight: 700; font-size: 0.9rem;">সাবস্ক্রাইব
+            করুন</button>
+        </form>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 16px;">
+            <img
+              src="/Users/user/.gemini/antigravity-ide/brain/45d730aa-339e-41c3-b228-52917d73aa1d/news1_horizontal_globe_logo_1785437043989.png"
+              alt="NEWS 1 Logo" class="site-logo-img" style="height: 48px;">
+          </a>
+          <p style="font-size: 0.9rem; line-height: 1.6; color: #94a3b8;">
+            নিউজ১ হল ভারতের অন্যতম অগ্রণী ডিজিটাল বাংলা সংবাদ মাধ্যম। সত্য, নিরপেক্ষ ও বস্তুনিষ্ঠ খবর পৌঁছে দেওয়াই
+            আমাদের একমাত্র লক্ষ্য।
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">বিভাগসমূহ</h4>
+          <div class="footer-links">
+            <a href="category.html">রাজ্যের খবর</a>
+            <a href="category.html">জাতীয় সংবাদ</a>
+            <a href="category.html">আন্তর্জাতিক</a>
+            <a href="category.html">খেলাধুলো</a>
+            <a href="category.html">বিনোদন</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">অন্যান্য পরিষেবা</h4>
+          <div class="footer-links">
+            <a href="#">লাইভ টিভি</a>
+            <a href="#">ই-পেপার</a>
+            <a href="#">ভিডিও গ্যালারি</a>
+            <a href="#">আবহাওয়া আপডেট</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">যোগাযোগ & তথ্য</h4>
+          <div class="footer-links">
+            <a href="#">আমাদের কথা</a>
+            <a href="#">বিজ্ঞাপনের জন্য</a>
+            <a href="#">গোপনীয়তা নীতি</a>
+            <a href="#">যোগাযোগ করুন</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© ২০২৬ নিউজ১ ডিজিটাল মিডিয়া লিমিটেড। সর্বস্বত্ব সংরক্ষিত।</p>
+        <div style="display: flex; gap: 14px; font-size: 1.1rem;">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal Overlay -->
+  <div class="modal-overlay" id="search-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem; font-weight: 700;">সংবাদ অনুসন্ধান</h3>
+        <button class="modal-close-btn" id="close-search-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="search-input-group">
+        <i class="fas fa-search" style="color: var(--brand-red);"></i>
+        <input type="text" id="modal-search-input" placeholder="কী বিষয়ে খবর খুঁজছেন? (যেমন: কলকাতা, ক্রিকেট)...">
+      </div>
+      <div id="search-results-box" style="margin-top: 16px; max-height: 280px; overflow-y: auto;">
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 20px;">খবর খুঁজতে শব্দ টাইপ
+          করুন...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bookmark Side Drawer -->
+  <div class="side-drawer" id="bookmark-drawer">
+    <div class="drawer-header">
+      <h3 style="font-size: 1.15rem; font-weight: 700;"><i class="fas fa-bookmark" style="color: var(--brand-red);"></i>
+        আপনার সংরক্ষিত খবর</h3>
+      <button class="modal-close-btn" id="close-bookmark-drawer"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="bookmark-items-list" id="bookmark-items-list">
+      <!-- Dynamic Bookmarks list -->
+    </div>
+  </div>
+
+  <!-- Video Player Modal Overlay -->
+  <div class="modal-overlay" id="video-modal">
+    <div class="modal-card" style="max-width: 800px; padding: 12px; background: #000;">
+      <div style="display: flex; justify-content: flex-end; padding-bottom: 8px;">
+        <button class="modal-close-btn" id="close-video-modal" style="color: #fff;"><i
+            class="fas fa-times"></i></button>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+        <iframe id="modal-video-frame" style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border:0;"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
