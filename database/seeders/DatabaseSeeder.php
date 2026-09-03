@@ -384,6 +384,20 @@ class DatabaseSeeder extends Seeder
         ]);
         $tech->tags()->attach([$tags['technology']->id, $tags['india']->id]);
 
+        $tech2 = Article::create([
+            'title' => 'অ্যাপলের নতুন আইফোন সিরিজে বড় চমক — স্যাটেলাইট কানেক্টিভিটি ও উন্নত AI প্রসেসর',
+            'slug' => 'apple-iphone-new-series-satellite-ai-chip',
+            'content' => '<p>প্রযুক্তি: বিশ্বখ্যাত প্রযুক্তি সংস্থা অ্যাপল তাদের নতুন স্মার্টফোন সিরিজে বিশেষ এআই ফিচারের ঘোষণা দিল। এতে স্যাটেলাইট কলিং এবং অত্যন্ত শক্তিশালী চিপসেট ব্যবহার করা হয়েছে।</p>',
+            'excerpt' => 'নতুন প্রসেসর ও স্যাটেলাইট কানেক্টিভিটি ফিচার নিয়ে লঞ্চ হলো নতুন আইফোন সিরিজ।',
+            'thumbnail_url' => 'https://picsum.photos/seed/tech2/400/250',
+            'category_id' => $categories['tech']->id,
+            'user_id' => $writer1->id,
+            'status' => 'published',
+            'view_count' => 5890,
+            'published_at' => Carbon::now()->subHours(1)
+        ]);
+        $tech2->tags()->attach([$tags['technology']->id]);
+
         // Health
         $health = Article::create([
             'title' => 'গরমে সুস্থ থাকার সহজ উপায় — বিশেষজ্ঞদের পরামর্শ জানুন',

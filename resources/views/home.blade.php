@@ -93,6 +93,10 @@
               </div>
             </article>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--text-muted, #64748b); background: var(--bg-surface-subtle, #f8fafc); border-radius: var(--radius-md, 8px); border: 1px dashed var(--border-color, #cbd5e1); font-size: 0.95rem;">
+            <i class="far fa-newspaper" style="margin-right: 8px; color: var(--brand-red, #e11d48);"></i> এই মুহূর্তে এই বিভাগে কোনো খবর পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>
@@ -117,6 +121,10 @@
               </div>
             </div>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--text-muted, #64748b); background: var(--bg-surface-subtle, #f8fafc); border-radius: var(--radius-md, 8px); border: 1px dashed var(--border-color, #cbd5e1); font-size: 0.95rem;">
+            <i class="fas fa-running" style="margin-right: 8px; color: var(--brand-red, #e11d48);"></i> এই মুহূর্তে খেলাধুলোর কোনো খবর পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>
@@ -142,6 +150,10 @@
               <div class="video-title">{{ $video->title }}</div>
             </div>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: #cbd5e1; background: rgba(255,255,255,0.05); border-radius: var(--radius-md, 8px); border: 1px dashed rgba(255,255,255,0.2); font-size: 0.95rem;">
+            <i class="fas fa-play-circle" style="margin-right: 8px; color: #f43f5e;"></i> এই মুহূর্তে কোনো ভিডিও বুলেটিন পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>
@@ -172,6 +184,10 @@
               </div>
             </article>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--text-muted, #64748b); background: var(--bg-surface-subtle, #f8fafc); border-radius: var(--radius-md, 8px); border: 1px dashed var(--border-color, #cbd5e1); font-size: 0.95rem;">
+            <i class="fas fa-globe-americas" style="margin-right: 8px; color: #2563eb;"></i> এই মুহূর্তে আন্তর্জাতিক কোনো খবর পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>
@@ -197,6 +213,10 @@
               </div>
             </article>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--text-muted, #64748b); background: var(--bg-surface-subtle, #f8fafc); border-radius: var(--radius-md, 8px); border: 1px dashed var(--border-color, #cbd5e1); font-size: 0.95rem;">
+            <i class="fas fa-film" style="margin-right: 8px; color: #d97706;"></i> এই মুহূর্তে বিনোদনের কোনো খবর পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>
@@ -221,6 +241,10 @@
               </div>
             </div>
           @endforeach
+        @else
+          <div class="empty-news-notice" style="grid-column: 1 / -1; padding: 24px; text-align: center; color: var(--text-muted, #64748b); background: var(--bg-surface-subtle, #f8fafc); border-radius: var(--radius-md, 8px); border: 1px dashed var(--border-color, #cbd5e1); font-size: 0.95rem;">
+            <i class="fas fa-microchip" style="margin-right: 8px; color: #059669;"></i> এই মুহূর্তে টেকনোলজির কোনো খবর পাওয়া যায়নি।
+          </div>
         @endif
       </div>
     </section>

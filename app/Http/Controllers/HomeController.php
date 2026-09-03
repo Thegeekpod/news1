@@ -71,10 +71,10 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        // Tech & Lifestyle articles (2 articles)
+        // Tech & Innovation articles (2 articles)
         $techArticles = Article::published()
             ->whereHas('category', function ($q) {
-                $q->whereIn('slug', ['technology', 'tech', 'lifestyle']);
+                $q->whereIn('slug', ['technology', 'tech', 'gadgets', 'science']);
             })
             ->latest('published_at')
             ->with(['category', 'author'])
