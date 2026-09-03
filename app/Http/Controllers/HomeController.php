@@ -31,7 +31,7 @@ class HomeController extends Controller
             $topStories = $topStories->concat($fill);
         }
 
-        // State & National News articles (3 articles)
+        // State & National News articles (4 articles)
         $stateArticles = Article::published()
             ->whereHas('category', function ($q) {
                 $q->whereIn('slug', ['state', 'politics', 'country', 'national', 'kolkata']);
@@ -40,10 +40,6 @@ class HomeController extends Controller
             ->with(['category', 'author'])
             ->take(4)
             ->get();
-
-        if ($stateArticles->isEmpty()) {
-            $stateArticles = Article::published()->latest('published_at')->with(['category', 'author'])->take(4)->get();
-        }
 
         // Sports articles (2 articles)
         $sportsArticles = Article::published()
@@ -55,10 +51,6 @@ class HomeController extends Controller
             ->take(2)
             ->get();
 
-        if ($sportsArticles->isEmpty()) {
-            $sportsArticles = Article::published()->latest('published_at')->with(['category', 'author'])->skip(2)->take(2)->get();
-        }
-
         // International / World articles (2 articles)
         $internationalArticles = Article::published()
             ->whereHas('category', function ($q) {
@@ -68,10 +60,6 @@ class HomeController extends Controller
             ->with(['category', 'author'])
             ->take(2)
             ->get();
-
-        if ($internationalArticles->isEmpty()) {
-            $internationalArticles = Article::published()->latest('published_at')->with(['category', 'author'])->skip(4)->take(2)->get();
-        }
 
         // Entertainment articles (3 articles)
         $entertainmentArticles = Article::published()
@@ -83,10 +71,6 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        if ($entertainmentArticles->isEmpty()) {
-            $entertainmentArticles = Article::published()->latest('published_at')->with(['category', 'author'])->skip(6)->take(3)->get();
-        }
-
         // Tech & Lifestyle articles (2 articles)
         $techArticles = Article::published()
             ->whereHas('category', function ($q) {
@@ -96,10 +80,6 @@ class HomeController extends Controller
             ->with(['category', 'author'])
             ->take(2)
             ->get();
-
-        if ($techArticles->isEmpty()) {
-            $techArticles = Article::published()->latest('published_at')->with(['category', 'author'])->skip(8)->take(2)->get();
-        }
 
         // Videos
         $videos = Video::latest()->take(3)->get();

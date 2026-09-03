@@ -427,5 +427,33 @@ class DatabaseSeeder extends Seeder
             'published_at' => Carbon::now()->subHours(5)
         ]);
         $fin->tags()->attach([$tags['stock-market']->id]);
+
+        // Additional Sports Articles
+        $sports2 = Article::create([
+            'title' => 'টি-২০ বিশ্বকাপ: দুর্দান্ত সেঞ্চুরি করে ভারতকে ঐতিহাসিক জয় এনে দিলেন শুভমান গিল',
+            'slug' => 't20-world-cup-shubman-gill-century-india-win',
+            'content' => '<p>খেলাধুলো: টি-২০ বিশ্বকাপের সেমিফাইনালে অসাধারণ ব্যাটিং পারফরম্যান্স দেখা গেল। শুভমান গিলের বিধ্বংসী শতরণে ভর করে ভারত প্রতিপক্ষকে ৬ উইকেটে হারিয়ে বিশ্বকাপের ফাইনালে টিকিট নিশ্চিত করল।</p>',
+            'excerpt' => 'টি-২০ বিশ্বকাপ: দুর্দান্ত সেঞ্চুরি করে ভারতকে ঐতিহাসিক জয় এনে দিলেন শুভমান গিল।',
+            'thumbnail_url' => 'https://picsum.photos/seed/sports2/400/250',
+            'category_id' => $categories['sports']->id,
+            'user_id' => $writer2->id,
+            'status' => 'published',
+            'view_count' => 6420,
+            'published_at' => Carbon::now()->subHours(1)
+        ]);
+        $sports2->tags()->attach([$tags['cricket']->id]);
+
+        $sports3 = Article::create([
+            'title' => 'আইএসএল ডার্বি: ইস্টবেঙ্গলকে ২-১ গোলে হারিয়ে বড় জয় মোহনবাগানের',
+            'slug' => 'isl-derby-mohun-bagan-beat-east-bengal',
+            'content' => '<p>ফুটবল: যুবভারতী ক্রীড়াঙ্গনে রুদ্ধশ্বাস আইএসএল ডার্বি। ইস্টবেঙ্গলকে ২-১ ব্যবধানে পরাজিত করে লিগ তালিকার শীর্ষে উঠে এলো মোহনবাগান সুপার জায়ান্ট।</p>',
+            'excerpt' => 'আইএসএল ডার্বি: ইস্টবেঙ্গলকে ২-১ গোলে হারিয়ে বড় জয় মোহনবাগানের।',
+            'thumbnail_url' => 'https://picsum.photos/seed/sports3/400/250',
+            'category_id' => $categories['sports']->id,
+            'user_id' => $writer1->id,
+            'status' => 'published',
+            'view_count' => 8190,
+            'published_at' => Carbon::now()->subHours(2)
+        ]);
     }
 }

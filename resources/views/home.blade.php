@@ -70,7 +70,7 @@
     <section class="category-section-container theme-state">
       <div class="section-header">
         <h2 class="section-title"><i class="fas fa-newspaper"></i> রাজ্য ও দেশের খবর</h2>
-        <a href="{{ route('category.show', $stateArticles->first()->category->slug ?? 'politics') }}" class="view-all-link">সব খবর দেখুন <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('category.show', 'politics') }}" class="view-all-link">সব খবর দেখুন <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="cards-2col-grid">
         @if(isset($stateArticles) && $stateArticles->isNotEmpty())
@@ -101,7 +101,7 @@
     <section class="category-section-container theme-sports">
       <div class="section-header">
         <h2 class="section-title"><i class="fas fa-running"></i> খেলাধুলো (Sports)</h2>
-        <a href="{{ route('category.show', $sportsArticles->first()->category->slug ?? 'sports') }}" class="view-all-link">স্পোর্টস বুলেটিন <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('category.show', 'sports') }}" class="view-all-link">স্পোর্টস বুলেটিন <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="cards-2col-grid">
         @if(isset($sportsArticles) && $sportsArticles->isNotEmpty())
@@ -150,7 +150,7 @@
     <section class="category-section-container theme-world">
       <div class="section-header">
         <h2 class="section-title"><i class="fas fa-globe-americas"></i> আন্তর্জাতিক খবর (World News)</h2>
-        <a href="{{ route('category.show', $internationalArticles->first()->category->slug ?? 'international') }}" class="view-all-link">বিশ্বসংবাদ দেখুন <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('category.show', 'international') }}" class="view-all-link">বিশ্বসংবাদ দেখুন <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="cards-2col-grid">
         @if(isset($internationalArticles) && $internationalArticles->isNotEmpty())
@@ -180,7 +180,7 @@
     <section class="category-section-container theme-entertainment">
       <div class="section-header">
         <h2 class="section-title"><i class="fas fa-film"></i> বিনোদনের দুনিয়া (Entertainment)</h2>
-        <a href="{{ route('category.show', $entertainmentArticles->first()->category->slug ?? 'entertainment') }}" class="view-all-link">বিনোদন জগত <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('category.show', 'entertainment') }}" class="view-all-link">বিনোদন জগত <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="entertainment-grid">
         @if(isset($entertainmentArticles) && $entertainmentArticles->isNotEmpty())
@@ -205,7 +205,7 @@
     <section class="category-section-container theme-tech">
       <div class="section-header">
         <h2 class="section-title"><i class="fas fa-microchip"></i> টেকনোলজি ও গেজেট (Tech & Innovation)</h2>
-        <a href="{{ route('category.show', $techArticles->first()->category->slug ?? 'tech') }}" class="view-all-link">টেক আপডেট <i class="fas fa-arrow-right"></i></a>
+        <a href="{{ route('category.show', 'tech') }}" class="view-all-link">টেক আপডেট <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="cards-2col-grid">
         @if(isset($techArticles) && $techArticles->isNotEmpty())
