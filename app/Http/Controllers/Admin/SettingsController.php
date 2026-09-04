@@ -80,10 +80,88 @@ class SettingsController extends Controller
         'overcast clouds: 85-100%' => 'ঘন মেঘলা',
     ];
 
+    private static array $stateTranslations = [
+        'West Bengal' => 'পশ্চিমবঙ্গ',
+        'Tripura' => 'ত্রিপুরা',
+        'Assam' => 'অসম',
+        'Jharkhand' => 'ঝাড়খণ্ড',
+        'Bihar' => 'বিহার',
+        'Odisha' => 'ওড়িশা',
+        'Delhi' => 'দিল্লি',
+        'Maharashtra' => 'মহারাষ্ট্র',
+        'Karnataka' => 'কর্ণাটক',
+        'Tamil Nadu' => 'তামিলনাড়ু',
+        'Rangpur Division' => 'রংপুর বিভাগ',
+        'Rajshahi Division' => 'রাজশাহী বিভাগ',
+        'Dhaka Division' => 'ঢাকা বিভাগ',
+        'Chittagong Division' => 'চট্টগ্রাম বিভাগ',
+        'Sylhet Division' => 'সিলেট বিভাগ',
+        'Khulna Division' => 'খুলনা বিভাগ',
+        'Barisal Division' => 'বরিশাল বিভাগ',
+        'Mymensingh Division' => 'ময়মনসিংহ বিভাগ',
+    ];
+
     private static function translateToBengali(string $desc): string
     {
         $lower = strtolower(trim($desc));
         return self::$bengaliConditions[$lower] ?? $desc;
+    }
+
+    private static function geocodeLocation(?string $location, string $apiKey): ?array
+    {
+        $searchQuery = trim($location ?: 'Durgapur');
+
+        $geoResponse = \Illuminate\Support\Facades\Http::timeout(5)->get('http://api.openweathermap.org/geo/1.0/direct', [
+            'q' => $searchQuery,
+            'limit' => 5,
+            'appid' => $apiKey
+        ]);
+
+        if (!$geoResponse->successful() || empty($geoResponse->json())) {
+            return null;
+        }
+
+        $geoData = $geoResponse->json();
+        $selectedGeo = null;
+
+        $queryLower = mb_strtolower($searchQuery);
+        $wantsBD = str_contains($queryLower, 'bd') || str_contains($queryLower, 'bangladesh') || str_contains($queryLower, 'বাংলাদেশ');
+
+        if (!$wantsBD) {
+            foreach ($geoData as $item) {
+                if (($item['country'] ?? '') === 'IN' && ($item['state'] ?? '') === 'West Bengal') {
+                    $selectedGeo = $item;
+                    break;
+                }
+            }
+            if (!$selectedGeo) {
+                foreach ($geoData as $item) {
+                    if (($item['country'] ?? '') === 'IN') {
+                        $selectedGeo = $item;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!$selectedGeo) {
+            $selectedGeo = $geoData[0];
+        }
+
+        $cityName = $selectedGeo['local_names']['bn'] ?? $selectedGeo['name'];
+        if (($selectedGeo['name'] ?? '') === 'Durgapur' && ($selectedGeo['state'] ?? '') === 'West Bengal' && empty($selectedGeo['local_names']['bn'])) {
+            $cityName = 'দুর্গাপুর';
+        }
+
+        $stateRaw = $selectedGeo['state'] ?? '';
+        $stateName = self::$stateTranslations[$stateRaw] ?? $stateRaw;
+        $locationName = $cityName . ($stateName ? ', ' . $stateName : '');
+
+        return [
+            'lat' => $selectedGeo['lat'],
+            'lon' => $selectedGeo['lon'],
+            'location_name' => $locationName
+        ];
     }
 
     public function index()
@@ -161,36 +239,18 @@ class SettingsController extends Controller
         }
 
         try {
-            // 1. Geocode location to coordinates (free tier)
-            $geoResponse = \Illuminate\Support\Facades\Http::timeout(5)->get('http://api.openweathermap.org/geo/1.0/direct', [
-                'q' => $location,
-                'limit' => 1,
-                'appid' => $apiKey
-            ]);
-
-            if (!$geoResponse->successful()) {
-                $err = $geoResponse->json();
-                $message = $err['message'] ?? 'Geocoding request failed.';
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Geocoding API Error: ' . $message
-                ]);
-            }
-
-            $geoData = $geoResponse->json();
-            if (empty($geoData)) {
+            // 1. Geocode location to coordinates
+            $geo = self::geocodeLocation($location, $apiKey);
+            if (!$geo) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Location "' . $location . '" not found. Please try a different city name.'
                 ]);
             }
 
-            $geo = $geoData[0];
             $lat = $geo['lat'];
             $lon = $geo['lon'];
-            $cityName = $geo['local_names']['bn'] ?? $geo['name'];
-            $stateName = $geo['state'] ?? '';
-            $locationName = $cityName . ($stateName ? ', ' . $stateName : '');
+            $locationName = $geo['location_name'];
 
             // 2. Fetch current weather (free tier - data/2.5/weather)
             $weatherResponse = \Illuminate\Support\Facades\Http::timeout(8)->get('https://api.openweathermap.org/data/2.5/weather', [
@@ -263,20 +323,13 @@ class SettingsController extends Controller
     public static function fetchWeather($apiKey, $location)
     {
         try {
-            // 1. Geocode location to coordinates (free tier)
-            $geoResponse = \Illuminate\Support\Facades\Http::timeout(5)->get('http://api.openweathermap.org/geo/1.0/direct', [
-                'q' => $location ?: 'Durgapur',
-                'limit' => 1,
-                'appid' => $apiKey
-            ]);
+            // 1. Geocode location to coordinates
+            $geo = self::geocodeLocation($location, $apiKey);
 
-            if ($geoResponse->successful() && !empty($geoResponse->json())) {
-                $geo = $geoResponse->json()[0];
+            if ($geo) {
                 $lat = $geo['lat'];
                 $lon = $geo['lon'];
-                $cityName = $geo['local_names']['bn'] ?? $geo['name'];
-                $stateName = $geo['state'] ?? '';
-                $locationName = $cityName . ($stateName ? ', ' . $stateName : '');
+                $locationName = $geo['location_name'];
 
                 // 2. Fetch current weather (free tier - data/2.5/weather)
                 $weatherResponse = \Illuminate\Support\Facades\Http::timeout(8)->get('https://api.openweathermap.org/data/2.5/weather', [
