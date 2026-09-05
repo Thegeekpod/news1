@@ -10,6 +10,14 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', $g_settings['site_meta_title'] ?? (($g_settings['site_name'] ?? 'নিউজ১') . ' - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal'))</title>
   <meta name="description" content="@yield('meta_description', $g_settings['site_meta_description'] ?? 'নিউজ১ বাংলা সংবাদের সবচেয়ে নির্ভরযোগ্য ডিজিটাল পোর্টাল। জানুন রাজ্য, দেশ, আন্তর্জাতিক, খেলাধুলো, বিনোদন ও লাইফস্টাইলের সর্বশেষ খবর।')">
+  <meta name="google-site-verification" content="eyat-0-_-NY7SJQ1YwpM-w-kKKo6iqBc_se0UnG9OZM" />
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N745HGJV');</script>
+<!-- End Google Tag Manager -->
   @if(!empty($g_settings['site_meta_keywords']))
     <meta name="keywords" content="{{ $g_settings['site_meta_keywords'] }}">
   @endif
@@ -17,7 +25,7 @@
     <link rel="shortcut icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
     <link rel="icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
   @else
-    <link rel="shortcut icon" href="{{ asset('logo.jpeg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('logo_png.png') }}" type="image/x-icon">
   @endif
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -25,6 +33,10 @@
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N745HGJV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <!-- Top Utilities Bar -->
   <div class="topbar">
@@ -52,7 +64,7 @@
   <header class="main-header">
     <div class="container header-wrapper">
       <a href="{{ route('home') }}" class="brand-logo">
-        <img src="{{ asset('logo.jpeg') }}" alt="{{ $g_settings['site_name'] ?? 'NEWS 1' }} Logo" class="site-logo-img">
+        <img src="{{ asset('logo_png.png') }}" alt="{{ $g_settings['site_name'] ?? 'NEWS 1' }} Logo" class="site-logo-img">
       </a>
       <div class="header-actions">
         <button class="search-trigger-btn">
@@ -126,7 +138,7 @@
       <div class="footer-grid">
         <div>
           <a href="{{ route('home') }}" class="brand-logo" style="margin-bottom: 16px;">
-            <img src="{{ asset('logo.jpeg') }}" alt="{{ $g_settings['site_name'] ?? 'NEWS 1' }} Logo" class="site-logo-img footer-logo-img" style="height: 140px;">
+            <img src="{{ asset('logo_png.png') }}" alt="{{ $g_settings['site_name'] ?? 'NEWS 1' }} Logo" class="site-logo-img footer-logo-img" style="height: 140px;">
           </a>
           <p style="font-size: 0.9rem; line-height: 1.6; color: #94a3b8;">
             {{ $g_settings['footer_about'] ?? 'নিউজ১ হল ভারতের অন্যতম অগ্রণী ডিজিটাল বাংলা সংবাদ মাধ্যম। সত্য, নিরপেক্ষ ও বস্তুনিষ্ঠ খবর পৌঁছে দেওয়াই আমাদের একমাত্র লক্ষ্য।' }}
