@@ -65,6 +65,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="container header-wrapper">
       <a href="{{ route('home') }}" class="brand-logo">
         <img src="{{ asset('logo_png.png') }}" alt="{{ $g_settings['site_name'] ?? 'NEWS 1' }} Logo" class="site-logo-img">
+        <div class="logo-tagline-rotator" aria-label="Tagline">
+          <span class="tagline-item">Always 1</span>
+          <span class="tagline-item">জানতে হলে দেখতে হবে</span>
+        </div>
       </a>
       <div class="header-actions">
         <button class="search-trigger-btn">
@@ -235,7 +239,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-  <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/main.js?v=2.2') }}"></script>
   @yield('scripts')
 </body>
 

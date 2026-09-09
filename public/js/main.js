@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCityWeatherTabs();
   initAudioReader();
   initTickerPause();
+  initStockMarketWidget();
 });
 
 /* ==========================================================================
@@ -356,4 +357,313 @@ function initTickerPause() {
       tickerContent.style.animationPlayState = 'running';
     });
   }
+}
+
+/* ==========================================================================
+   10. Live Top 10 Stock Market Widget & Auto-Rotation
+   ========================================================================== */
+function initStockMarketWidget() {
+  const stockWidget = document.getElementById('stock-market-widget');
+  if (!stockWidget) return;
+
+  const niftyPrice = document.getElementById('nifty-price');
+  const niftyChange = document.getElementById('nifty-change');
+  const sensexPrice = document.getElementById('sensex-price');
+  const sensexChange = document.getElementById('sensex-change');
+
+  const spotlightRank = document.getElementById('spotlight-rank');
+  const spotlightSymbol = document.getElementById('spotlight-symbol');
+  const spotlightName = document.getElementById('spotlight-name');
+  const spotlightBadge = document.getElementById('spotlight-badge');
+  const spotlightPrice = document.getElementById('spotlight-price');
+  const spotlightProgress = document.getElementById('spotlight-progress');
+
+  const stockListContainer = document.getElementById('stock-list-container');
+  const stockRefreshBtn = document.getElementById('stock-refresh-btn');
+  const stockLastUpdated = document.getElementById('stock-last-updated');
+  const filterTabs = document.querySelectorAll('.stock-tab-btn');
+
+  let allStocks = [];
+  let currentFilter = 'all';
+  let currentSpotlightIdx = 0;
+  let progressInterval = null;
+  let previousPrices = {};
+  let isHoveringList = false;
+
+  // Helper to get currently filtered stocks list
+  function getFilteredStocks() {
+    if (currentFilter === 'gainers') {
+      return allStocks.filter(s => s.is_positive === true);
+    } else if (currentFilter === 'losers') {
+      return allStocks.filter(s => s.is_positive === false);
+    }
+    return allStocks;
+  }
+
+  // Fetch live stock data from API
+  async function fetchStockMarketData(isManual = false) {
+    if (isManual && stockRefreshBtn) {
+      stockRefreshBtn.classList.add('spinning');
+    }
+
+    try {
+      const response = await fetch('/market/top-stocks', {
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (!response.ok) throw new Error('Failed to fetch stock data');
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        allStocks = data.stocks || [];
+
+        // Render Indices
+        if (data.indices && data.indices.length >= 2) {
+          const nifty = data.indices[0];
+          const sensex = data.indices[1];
+
+          if (niftyPrice && niftyChange) {
+            niftyPrice.textContent = nifty.price_formatted;
+            niftyChange.textContent = (nifty.is_positive ? '▲ ' : '▼ ') + nifty.change_percent_formatted;
+            niftyChange.className = 'index-change ' + (nifty.is_positive ? 'positive' : 'negative');
+          }
+
+          if (sensexPrice && sensexChange) {
+            sensexPrice.textContent = sensex.price_formatted;
+            sensexChange.textContent = (sensex.is_positive ? '▲ ' : '▼ ') + sensex.change_percent_formatted;
+            sensexChange.className = 'index-change ' + (sensex.is_positive ? 'positive' : 'negative');
+          }
+        }
+
+        // Update Last Updated Timestamp
+        if (stockLastUpdated && data.last_updated) {
+          stockLastUpdated.textContent = 'আপডেট: ' + data.last_updated;
+        }
+
+        // Render Stock List
+        renderStockList();
+        updateSpotlightCard(currentSpotlightIdx);
+      }
+    } catch (err) {
+      console.error('Error loading stock market data:', err);
+    } finally {
+      if (stockRefreshBtn) {
+        setTimeout(() => stockRefreshBtn.classList.remove('spinning'), 500);
+      }
+    }
+  }
+
+  // Render stock list with active filter
+  function renderStockList() {
+    if (!stockListContainer) return;
+
+    const filteredStocks = getFilteredStocks();
+
+    if (filteredStocks.length === 0) {
+      stockListContainer.innerHTML = '<div style="text-align:center; padding:18px; color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-info-circle"></i> এই ক্যাটাগরিতে কোনো স্টক নেই।</div>';
+      return;
+    }
+
+    let html = '';
+    filteredStocks.forEach((stock) => {
+      const globalIdx = allStocks.findIndex(s => s.symbol === stock.symbol);
+      const isSpotlight = (globalIdx === currentSpotlightIdx);
+      const prevPrice = previousPrices[stock.symbol];
+      let flashClass = '';
+
+      if (prevPrice !== undefined && prevPrice !== stock.price) {
+        flashClass = stock.price > prevPrice ? 'stock-flash-green' : 'stock-flash-red';
+      }
+      if (stock.price !== undefined) {
+        previousPrices[stock.symbol] = stock.price;
+      }
+
+      const arrow = stock.is_positive ? '<i class="fas fa-arrow-trend-up"></i>' : '<i class="fas fa-arrow-trend-down"></i>';
+      const pillClass = stock.is_positive ? 'positive' : 'negative';
+      const cat = stock.is_positive ? 'gainers' : 'losers';
+
+      html += `
+        <div class="stock-item-row ${isSpotlight ? 'spotlight-active' : ''} ${flashClass}" data-global-idx="${globalIdx >= 0 ? globalIdx : 0}" data-symbol="${stock.symbol}" data-category="${cat}">
+          <div class="stock-item-left">
+            <span class="stock-item-rank">${stock.rank_bn || ''}</span>
+            <div class="stock-item-info">
+              <span class="stock-item-symbol">${stock.symbol}</span>
+              <span class="stock-item-name" title="${stock.name_bn}">${stock.name_bn}</span>
+            </div>
+          </div>
+          <div class="stock-item-right">
+            <span class="stock-item-price">${stock.price_formatted}</span>
+            <span class="stock-change-pill ${pillClass}">
+              ${arrow} ${stock.change_percent_formatted}
+            </span>
+          </div>
+        </div>
+      `;
+    });
+
+    stockListContainer.innerHTML = html;
+    attachRowEvents();
+  }
+
+  function attachRowEvents() {
+    if (!stockListContainer) return;
+    const rows = stockListContainer.querySelectorAll('.stock-item-row');
+    rows.forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        isHoveringList = true;
+        const idx = parseInt(row.getAttribute('data-global-idx'), 10);
+        if (!isNaN(idx)) {
+          currentSpotlightIdx = idx;
+          updateSpotlightCard(idx);
+        }
+      });
+
+      row.addEventListener('mouseleave', () => {
+        isHoveringList = false;
+      });
+
+      row.addEventListener('click', (e) => {
+        e.preventDefault();
+        const idx = parseInt(row.getAttribute('data-global-idx'), 10);
+        if (!isNaN(idx)) {
+          currentSpotlightIdx = idx;
+          updateSpotlightCard(idx);
+          resetSpotlightProgress();
+        }
+      });
+    });
+  }
+
+  // Update Spotlight Featured Card
+  function updateSpotlightCard(index) {
+    if (!allStocks || allStocks.length === 0 || !allStocks[index]) return;
+
+    const stock = allStocks[index];
+
+    if (spotlightRank) spotlightRank.textContent = '#' + (stock.rank_bn || (index + 1));
+    if (spotlightSymbol) spotlightSymbol.textContent = stock.symbol;
+    if (spotlightName) spotlightName.textContent = stock.name_bn;
+    if (spotlightPrice) spotlightPrice.textContent = stock.price_formatted;
+
+    if (spotlightBadge) {
+      const arrow = stock.is_positive ? '<i class="fas fa-arrow-trend-up"></i>' : '<i class="fas fa-arrow-trend-down"></i>';
+      spotlightBadge.innerHTML = arrow + ' ' + (stock.change_percent_formatted || '');
+      spotlightBadge.className = 'spotlight-badge ' + (stock.is_positive ? 'positive' : 'negative');
+    }
+
+    // Highlight corresponding row in list
+    if (stockListContainer) {
+      const rows = stockListContainer.querySelectorAll('.stock-item-row');
+      rows.forEach(r => {
+        if (parseInt(r.getAttribute('data-global-idx'), 10) === index) {
+          r.classList.add('spotlight-active');
+        } else {
+          r.classList.remove('spotlight-active');
+        }
+      });
+    }
+  }
+
+  // Start Spotlight Auto-Rotation and Progress Bar Animation
+  function startSpotlightRotation() {
+    if (progressInterval) clearInterval(progressInterval);
+
+    updateSpotlightCard(currentSpotlightIdx);
+    resetSpotlightProgress();
+
+    const duration = 3600; // 3.6s per stock spotlight cycle
+    const step = 60;
+    let elapsed = 0;
+
+    progressInterval = setInterval(() => {
+      if (!isHoveringList) {
+        elapsed += step;
+        const pct = Math.min((elapsed / duration) * 100, 100);
+        if (spotlightProgress) {
+          spotlightProgress.style.width = pct + '%';
+        }
+        if (elapsed >= duration) {
+          elapsed = 0;
+          const currentFiltered = getFilteredStocks();
+          if (currentFiltered.length > 0) {
+            const currentFilteredIdx = currentFiltered.findIndex(s => allStocks.indexOf(s) === currentSpotlightIdx);
+            const nextFilteredIdx = (currentFilteredIdx + 1) % currentFiltered.length;
+            const nextStock = currentFiltered[nextFilteredIdx];
+            currentSpotlightIdx = allStocks.findIndex(s => s.symbol === nextStock.symbol);
+            if (currentSpotlightIdx < 0) currentSpotlightIdx = 0;
+            updateSpotlightCard(currentSpotlightIdx);
+          }
+        }
+      }
+    }, step);
+  }
+
+  function resetSpotlightProgress() {
+    if (spotlightProgress) {
+      spotlightProgress.style.width = '0%';
+    }
+  }
+
+  // Filter Tab Click Handlers
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentFilter = tab.getAttribute('data-filter') || 'all';
+
+      const filtered = getFilteredStocks();
+      if (filtered.length > 0) {
+        currentSpotlightIdx = allStocks.findIndex(s => s.symbol === filtered[0].symbol);
+        if (currentSpotlightIdx < 0) currentSpotlightIdx = 0;
+      }
+
+      renderStockList();
+      updateSpotlightCard(currentSpotlightIdx);
+      resetSpotlightProgress();
+    });
+  });
+
+  // Refresh Button Click Handler
+  if (stockRefreshBtn) {
+    stockRefreshBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      fetchStockMarketData(true);
+    });
+  }
+
+  // Initial DOM Parse (Instant zero-delay start)
+  const initialRows = stockListContainer ? stockListContainer.querySelectorAll('.stock-item-row') : [];
+  if (initialRows.length > 0) {
+    initialRows.forEach((row, i) => {
+      const rankEl = row.querySelector('.stock-item-rank');
+      const symEl = row.querySelector('.stock-item-symbol');
+      const nameEl = row.querySelector('.stock-item-name');
+      const priceEl = row.querySelector('.stock-item-price');
+      const pillEl = row.querySelector('.stock-change-pill');
+      const isPos = row.getAttribute('data-is-positive') === '1' || (pillEl ? pillEl.classList.contains('positive') : true);
+
+      allStocks.push({
+        rank: i + 1,
+        rank_bn: rankEl ? rankEl.textContent.trim() : String(i + 1),
+        symbol: symEl ? symEl.textContent.trim() : (row.getAttribute('data-symbol') || ''),
+        name_bn: nameEl ? nameEl.textContent.trim() : '',
+        price_formatted: priceEl ? priceEl.textContent.trim() : '₹০.০০',
+        change_percent_formatted: pillEl ? pillEl.textContent.trim() : '০.০০%',
+        is_positive: isPos,
+      });
+    });
+    attachRowEvents();
+    startSpotlightRotation();
+  }
+
+  // Initial background fetch for real-time live data
+  fetchStockMarketData();
+
+  // Auto refresh stock data every 30 seconds
+  setInterval(() => {
+    fetchStockMarketData(false);
+  }, 30000);
 }

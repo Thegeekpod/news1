@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SettingsController as AdminSettingsController;
 
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\MarketController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
@@ -33,6 +34,7 @@ Route::get('/coming-soon', [PageController::class, 'comingSoon'])->name('coming-
 Route::get('/weather/refresh', [HomeController::class, 'refreshWeather'])->name('weather.refresh');
 Route::get('/videos', [HomeController::class, 'videos'])->name('videos.all');
 Route::get('/top-stories', [HomeController::class, 'topStories'])->name('lead-news.all');
+Route::get('/market/top-stocks', [MarketController::class, 'getTopStocks'])->name('market.top-stocks');
 
 /*
 |--------------------------------------------------------------------------

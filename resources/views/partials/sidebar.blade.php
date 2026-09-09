@@ -36,6 +36,102 @@
     </div>
   </div>
 
+  <!-- Live Top 10 Stock Market Widget -->
+  @php
+    $defaultStocks = \App\Http\Controllers\MarketController::$defaultStocks ?? [];
+    $firstStock = $defaultStocks[0] ?? [
+        'rank' => 1, 'symbol' => 'RELIANCE', 'name_bn' => 'রিলায়েন্স ইন্ডাস্ট্রিজ', 'base_price' => 1279.00, 'base_percent' => 1.22
+    ];
+  @endphp
+  <div class="widget-box stock-market-widget" id="stock-market-widget">
+    <div class="widget-title stock-widget-header">
+      <span><i class="fas fa-chart-line" style="color: #10b981;"></i> শেয়ার বাজার (Top 10 Stocks)</span>
+      <div class="stock-header-controls">
+        <span class="stock-live-badge"><span class="stock-live-dot"></span> লাইভ</span>
+        <button id="stock-refresh-btn" class="stock-refresh-btn" title="লাইভ দর রিফ্রেশ করুন" aria-label="Refresh Stock Prices">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Indices Snapshot (NIFTY & SENSEX) -->
+    <div class="stock-indices-grid" id="stock-indices-container">
+      <div class="stock-index-card" id="index-nifty">
+        <div class="index-meta">
+          <span class="index-name">NIFTY 50</span>
+          <span class="index-change positive" id="nifty-change">▲ +০.৪৭%</span>
+        </div>
+        <div class="index-price" id="nifty-price">২৩,৪৩০.০০</div>
+      </div>
+      <div class="stock-index-card" id="index-sensex">
+        <div class="index-meta">
+          <span class="index-name">SENSEX</span>
+          <span class="index-change positive" id="sensex-change">▲ +০.৪৪%</span>
+        </div>
+        <div class="index-price" id="sensex-price">৭৭,১৫০.০০</div>
+      </div>
+    </div>
+
+    <!-- Auto-Changing Featured Stock Spotlight Card -->
+    <div class="stock-spotlight-card" id="stock-spotlight-card">
+      <div class="spotlight-progress-bar"><div class="spotlight-progress-fill" id="spotlight-progress"></div></div>
+      <div class="spotlight-header">
+        <div class="spotlight-company">
+          <span class="spotlight-rank" id="spotlight-rank">#১</span>
+          <div>
+            <div class="spotlight-symbol" id="spotlight-symbol">{{ $firstStock['symbol'] }}</div>
+            <div class="spotlight-name" id="spotlight-name">{{ $firstStock['name_bn'] }}</div>
+          </div>
+        </div>
+        <div class="spotlight-badge positive" id="spotlight-badge"><i class="fas fa-arrow-trend-up"></i> +{{ BengaliHelper::toBengaliNumerals(number_format($firstStock['base_percent'], 2)) }}%</div>
+      </div>
+      <div class="spotlight-footer">
+        <span class="spotlight-label">বাজার দর:</span>
+        <span class="spotlight-price" id="spotlight-price">₹{{ BengaliHelper::toBengaliNumerals(number_format($firstStock['base_price'], 2)) }}</span>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="stock-filter-tabs">
+      <button type="button" class="stock-tab-btn active" data-filter="all">শীর্ষ ১০</button>
+      <button type="button" class="stock-tab-btn" data-filter="gainers">লাভজনক (Gainers)</button>
+      <button type="button" class="stock-tab-btn" data-filter="losers">লোকসান (Losers)</button>
+    </div>
+
+    <!-- Top 10 Stocks List -->
+    <div class="stock-list-container" id="stock-list-container">
+      @foreach($defaultStocks as $idx => $stock)
+        @php
+          $isPos = ($stock['base_percent'] ?? 0) >= 0;
+          $pillCls = $isPos ? 'positive' : 'negative';
+          $arrow = $isPos ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down';
+          $sign = $isPos ? '+' : '';
+          $cat = $isPos ? 'gainers' : 'losers';
+        @endphp
+        <div class="stock-item-row {{ $idx === 0 ? 'spotlight-active' : '' }}" data-global-idx="{{ $idx }}" data-symbol="{{ $stock['symbol'] }}" data-category="{{ $cat }}" data-is-positive="{{ $isPos ? '1' : '0' }}">
+          <div class="stock-item-left">
+            <span class="stock-item-rank">{{ BengaliHelper::toBengaliNumerals($idx + 1) }}</span>
+            <div class="stock-item-info">
+              <span class="stock-item-symbol">{{ $stock['symbol'] }}</span>
+              <span class="stock-item-name" title="{{ $stock['name_bn'] }}">{{ $stock['name_bn'] }}</span>
+            </div>
+          </div>
+          <div class="stock-item-right">
+            <span class="stock-item-price">₹{{ BengaliHelper::toBengaliNumerals(number_format($stock['base_price'], 2)) }}</span>
+            <span class="stock-change-pill {{ $pillCls }}">
+              <i class="fas {{ $arrow }}"></i> {{ $sign }}{{ BengaliHelper::toBengaliNumerals(number_format($stock['base_percent'], 2)) }}%
+            </span>
+          </div>
+        </div>
+      @endforeach
+    </div>
+
+    <div class="stock-widget-footer">
+      <span class="stock-status-text"><i class="fas fa-circle-check" style="color: #10b981;"></i> NSE / BSE তথ্য</span>
+      <span class="stock-updated-text" id="stock-last-updated">লাইভ সক্রিয়</span>
+    </div>
+  </div>
+
   <!-- Sidebar Advertisement Slot (Right ABOVE Popular Topics) -->
   @if(isset($g_ads['sidebar_banner']) && $g_ads['sidebar_banner']->isNotEmpty())
     <div class="widget-box" style="text-align: center; padding: 14px;">
