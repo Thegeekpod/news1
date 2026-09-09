@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $category->name_bn . ' - ' . ($g_settings['site_name'] ?? 'নিউজ১'))
+@section('title', (!empty($g_seo) && !empty($g_seo->meta_title)) ? $g_seo->meta_title : ($category->name_bn . ' - ' . ($g_settings['site_name'] ?? 'নিউজ১')))
+@section('meta_description', (!empty($g_seo) && !empty($g_seo->meta_description)) ? $g_seo->meta_description : ($category->description ?? ($category->name_bn . ' বিভাগের সমস্ত টাটকা খবর একনজরে।')))
 
 @section('content')
 @php

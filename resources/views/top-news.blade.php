@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'শীর্ষ সংবাদ - ' . ($g_settings['site_name'] ?? 'নিউজ১'))
+@section('title', (!empty($g_seo) && !empty($g_seo->meta_title)) ? $g_seo->meta_title : ('শীর্ষ সংবাদ - ' . ($g_settings['site_name'] ?? 'নিউজ১')))
+@section('meta_description', (!empty($g_seo) && !empty($g_seo->meta_description)) ? $g_seo->meta_description : 'আজকের দিনের সবথেকে আলোচিত ও গুরুত্বপূর্ণ শীর্ষ বাংলা খবর এক নজরে।')
 
 @section('content')
 @php

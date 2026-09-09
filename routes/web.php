@@ -18,6 +18,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
+use App\Http\Controllers\Admin\SeoController as AdminSeoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +93,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         'store' => 'admin.ads.store',
         'update' => 'admin.ads.update',
         'destroy' => 'admin.ads.destroy',
+    ]);
+    Route::resource('seo', AdminSeoController::class)->names([
+        'index' => 'admin.seo.index',
+        'create' => 'admin.seo.create',
+        'store' => 'admin.seo.store',
+        'edit' => 'admin.seo.edit',
+        'update' => 'admin.seo.update',
+        'destroy' => 'admin.seo.destroy',
     ]);
     
     // Settings

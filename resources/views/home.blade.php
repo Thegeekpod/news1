@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', ($g_settings['site_name'] ?? 'নিউজ১') . ' - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal')
+@section('title', (!empty($g_seo) && !empty($g_seo->meta_title)) ? $g_seo->meta_title : (($g_settings['site_meta_title'] ?? null) ?: (($g_settings['site_name'] ?? 'নিউজ১') . ' - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal')))
+@section('meta_description', (!empty($g_seo) && !empty($g_seo->meta_description)) ? $g_seo->meta_description : ($g_settings['site_meta_description'] ?? 'নিউজ১ বাংলা সংবাদের সবচেয়ে নির্ভরযোগ্য ডিজিটাল পোর্টাল। জানুন রাজ্য, দেশ, আন্তর্জাতিক, খেলাধুলো, বিনোদন ও লাইফস্টাইলের সর্বশেষ খবর।'))
 
 @section('content')
 @php

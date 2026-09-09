@@ -186,22 +186,7 @@ class SettingsController extends Controller
             $data['site_live_mode'] = '0';
         }
 
-        // Handle Favicon file upload
-        if ($request->hasFile('site_favicon')) {
-            $file = $request->file('site_favicon');
-            $filename = 'favicon_' . time() . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('uploads/settings');
-            if (!file_exists($destinationPath)) {
-                mkdir($destinationPath, 0755, true);
-            }
-            $file->move($destinationPath, $filename);
-            $data['site_favicon'] = 'uploads/settings/' . $filename;
-        }
-
         foreach ($data as $key => $value) {
-            if ($key === 'site_favicon' && !$request->hasFile('site_favicon')) {
-                continue;
-            }
             Setting::updateOrCreate(
                 ['key' => $key],
                 ['value' => $value]

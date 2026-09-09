@@ -74,12 +74,17 @@ class AppServiceProvider extends ServiceProvider
 
             $combinedTickers = $combinedTickers->take(10);
 
+            // Resolve SEO Settings for the current request path
+            $currentPath = \App\Models\SeoSetting::normalizePath(request()->getPathInfo());
+            $currentSeo = \App\Models\SeoSetting::getForPath($currentPath);
+
             $view->with([
                 'g_categories' => \App\Models\Category::orderBy('display_order', 'asc')->get(),
                 'g_tickers' => $combinedTickers,
                 'g_popular' => $popular,
                 'g_latest' => $latest,
                 'g_settings' => $settings,
+                'g_seo' => $currentSeo,
                 'g_ads' => \App\Models\Advertisement::where('is_active', true)->get()->groupBy('slot_name'),
             ]);
         });

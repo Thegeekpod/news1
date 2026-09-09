@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'ভিডিও গ্যালারি - ' . ($g_settings['site_name'] ?? 'নিউজ১'))
+@section('title', (!empty($g_seo) && !empty($g_seo->meta_title)) ? $g_seo->meta_title : ('ভিডিও গ্যালারি - ' . ($g_settings['site_name'] ?? 'নিউজ১')))
+@section('meta_description', (!empty($g_seo) && !empty($g_seo->meta_description)) ? $g_seo->meta_description : 'দেখুন রাজ্য, দেশ, খেলা ও বিনোদনের সেরা সব ভিডিও সংবাদ ও বিশেষ ইন্টারভিউ।')
 
 @section('content')
 

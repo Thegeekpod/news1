@@ -76,42 +76,6 @@
       </div>
     </div>
 
-    <!-- Homepage SEO & Favicon Settings Section -->
-    <div style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
-      <h3 class="card-title" style="font-size: 16px; color: #a855f7; margin-bottom: 16px;">
-        <i class="fas fa-search-plus"></i> Homepage SEO & Favicon Settings (হোমপেজ এসইও ও ফ্যাভিকন)
-      </h3>
-      
-      <div class="form-group">
-        <label for="site_meta_title" class="form-label">Homepage Meta Title (হোমপেজ মেটা টাইটেল)</label>
-        <input type="text" name="site_meta_title" id="site_meta_title" class="form-control" value="{{ old('site_meta_title', $settings['site_meta_title'] ?? '') }}" placeholder="যেমন: নিউজ১ - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal">
-        <small style="color: #94a3b8; display: block; margin-top: 4px;">Google সার্চে মূল ওয়েবসাইটের যে শিরোনামটি দেখাবে।</small>
-      </div>
-
-      <div class="form-group">
-        <label for="site_meta_description" class="form-label">Homepage Meta Description (হোমপেজ মেটা বিবরণ)</label>
-        <textarea name="site_meta_description" id="site_meta_description" class="form-control" rows="2" placeholder="যেমন: নিউজ১ হল ভারতের অন্যতম অগ্রণী ডিজিটাল বাংলা সংবাদ মাধ্যম। রাজ্য, দেশ ও আন্তর্জাতিক খবরের সেরা ঠিকানা।">{{ old('site_meta_description', $settings['site_meta_description'] ?? '') }}</textarea>
-        <small style="color: #94a3b8; display: block; margin-top: 4px;">Google সার্চে টাইটেলের নিচে থাকা সংক্ষিপ্ত বিবরণ।</small>
-      </div>
-
-      <div class="form-group">
-        <label for="site_meta_keywords" class="form-label">Homepage Meta Keywords (মেটা কি-ওয়ার্ড)</label>
-        <input type="text" name="site_meta_keywords" id="site_meta_keywords" class="form-control" value="{{ old('site_meta_keywords', $settings['site_meta_keywords'] ?? '') }}" placeholder="যেমন: খবর, বাংলা খবর, পশ্চিমবঙ্গ, রাজনীতি, আইপিএল, টেকনোলজি">
-        <small style="color: #94a3b8; display: block; margin-top: 4px;">কমা (,) দিয়ে আলাদা করে কি-ওয়ার্ড লিখুন।</small>
-      </div>
-
-      <div class="form-group">
-        <label for="site_favicon" class="form-label">Favicon Icon (ওয়েবসাইট ফ্যাভিকন লোগো)</label>
-        @if(!empty($settings['site_favicon']))
-          <div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 6px; width: fit-content;">
-            <img src="{{ asset($settings['site_favicon']) }}" alt="Favicon" style="width: 32px; height: 32px; object-fit: contain;">
-            <span style="font-size: 12px; color: var(--text-muted);">বর্তমান ফ্যাভিকন</span>
-          </div>
-        @endif
-        <input type="file" name="site_favicon" id="site_favicon" class="form-control" accept="image/x-icon,image/png,image/jpeg,image/webp" style="padding: 8px 12px;">
-        <small style="color: #94a3b8; display: block; margin-top: 4px;">ব্রাউজার ট্যাবে দেখানোর ছোট আইকন (ICO, PNG, WEBP বা JPG ফরম্যাট)।</small>
-      </div>
-    </div>
 
     <!-- Social Links Section -->
     <div style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">

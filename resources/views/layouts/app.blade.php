@@ -1,5 +1,7 @@
 @php
     use App\Helpers\BengaliHelper;
+    $defaultTitle = (!empty($g_seo) && !empty($g_seo->meta_title)) ? $g_seo->meta_title : ($g_settings['site_meta_title'] ?? (($g_settings['site_name'] ?? 'নিউজ১') . ' - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal'));
+    $defaultDesc = (!empty($g_seo) && !empty($g_seo->meta_description)) ? $g_seo->meta_description : ($g_settings['site_meta_description'] ?? 'নিউজ১ বাংলা সংবাদের সবচেয়ে নির্ভরযোগ্য ডিজিটাল পোর্টাল। জানুন রাজ্য, দেশ, আন্তর্জাতিক, খেলাধুলো, বিনোদন ও লাইফস্টাইলের সর্বশেষ খবর।');
 @endphp
 <!DOCTYPE html>
 <html lang="bn">
@@ -8,8 +10,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>@yield('title', $g_settings['site_meta_title'] ?? (($g_settings['site_name'] ?? 'নিউজ১') . ' - নির্ভরযোগ্য সর্বশেষ বাংলা খবর | News1 Bengali News Portal'))</title>
-  <meta name="description" content="@yield('meta_description', $g_settings['site_meta_description'] ?? 'নিউজ১ বাংলা সংবাদের সবচেয়ে নির্ভরযোগ্য ডিজিটাল পোর্টাল। জানুন রাজ্য, দেশ, আন্তর্জাতিক, খেলাধুলো, বিনোদন ও লাইফস্টাইলের সর্বশেষ খবর।')">
+  <title>@yield('title', $defaultTitle)</title>
+  <meta name="description" content="@yield('meta_description', $defaultDesc)">
   <meta name="google-site-verification" content="eyat-0-_-NY7SJQ1YwpM-w-kKKo6iqBc_se0UnG9OZM" />
   <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -20,6 +22,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   @if(!empty($g_settings['site_meta_keywords']))
     <meta name="keywords" content="{{ $g_settings['site_meta_keywords'] }}">
+  @endif
+
+  @if(!empty($g_seo) && !empty($g_seo->other_tags))
+    {!! $g_seo->other_tags !!}
   @endif
   @if(!empty($g_settings['site_favicon']))
     <link rel="shortcut icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
