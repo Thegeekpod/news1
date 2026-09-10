@@ -27,6 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @if(!empty($g_seo) && !empty($g_seo->other_tags))
     {!! $g_seo->other_tags !!}
   @endif
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url('/sitemap.xml') }}">
+  <link rel="sitemap" type="application/xml" title="Google News Sitemap" href="{{ url('/sitemap-news.xml') }}">
   @if(!empty($g_settings['site_favicon']))
     <link rel="shortcut icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
     <link rel="icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">

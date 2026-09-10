@@ -22,6 +22,8 @@ class CheckSiteLiveMode
             'coming-soon',
             'newsletter',
             'weather',
+            'sitemap*',
+            'robots.txt',
         ];
 
         foreach ($allowedPrefixes as $prefix) {
@@ -38,6 +40,11 @@ class CheckSiteLiveMode
             'coming-soon',
             'newsletter.subscribe',
             'weather.refresh',
+            'sitemap.index',
+            'sitemap.news',
+            'sitemap.articles',
+            'sitemap.categories',
+            'sitemap.tags',
         ];
 
         if (in_array($request->route()?->getName(), $allowedRouteNames)) {

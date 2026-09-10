@@ -4,17 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\SeoSetting;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class SeoController extends Controller
 {
     /**
-     * Display a listing of the SEO page records.
+     * Display a listing of the SEO page records and sitemap overview.
      */
     public function index()
     {
         $seoPages = SeoSetting::orderBy('page_url', 'asc')->paginate(15);
-        return view('admin.seo.index', compact('seoPages'));
+        $articlesCount = Article::published()->count();
+        $categoriesCount = Category::count();
+        $tagsCount = Tag::count();
+        $seoCount = SeoSetting::count();
+
+        return view('admin.seo.index', compact('seoPages', 'articlesCount', 'categoriesCount', 'tagsCount', 'seoCount'));
     }
 
     /**

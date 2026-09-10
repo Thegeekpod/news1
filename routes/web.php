@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SettingsController as AdminSettingsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\MarketController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
@@ -36,6 +37,13 @@ Route::get('/weather/refresh', [HomeController::class, 'refreshWeather'])->name(
 Route::get('/videos', [HomeController::class, 'videos'])->name('videos.all');
 Route::get('/top-stories', [HomeController::class, 'topStories'])->name('lead-news.all');
 Route::get('/market/top-stocks', [MarketController::class, 'getTopStocks'])->name('market.top-stocks');
+
+// Dynamic XML Sitemaps
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemap-news.xml', [SitemapController::class, 'news'])->name('sitemap.news');
+Route::get('/sitemap-articles.xml', [SitemapController::class, 'articles'])->name('sitemap.articles');
+Route::get('/sitemap-categories.xml', [SitemapController::class, 'categories'])->name('sitemap.categories');
+Route::get('/sitemap-tags.xml', [SitemapController::class, 'tags'])->name('sitemap.tags');
 
 /*
 |--------------------------------------------------------------------------

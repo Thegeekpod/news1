@@ -107,7 +107,7 @@
     </div>
   @endif
   
-  @if(session('error') || $errors->any())
+  @if(session('error') || (isset($errors) && $errors->any()))
     <div class="alert-toast" id="alert-toast" style="border-left-color: var(--danger)">
       <i class="fas fa-exclamation-circle" style="color: var(--danger); font-size: 20px;"></i>
       <div>
