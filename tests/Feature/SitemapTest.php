@@ -47,6 +47,11 @@ class SitemapTest extends TestCase
             'slug' => 'election'
         ]);
 
+        $bengaliTag = Tag::create([
+            'name_bn' => 'দৈনিক খবর',
+            'slug' => 'দৈনিক-খবর'
+        ]);
+
         $response = $this->get('/sitemap.xml');
 
         $response->assertStatus(200);
@@ -55,6 +60,8 @@ class SitemapTest extends TestCase
         $response->assertSee('/category/national', false);
         $response->assertSee('/article/national-election-latest-news', false);
         $response->assertSee('/tag/election', false);
+        $response->assertDontSee('%E0%A6', false);
+        $response->assertDontSee('দৈনিক-খবর', false);
         $response->assertDontSee('<image:image', false);
         $response->assertDontSee('<script', false);
         $response->assertDontSee('</script>', false);
