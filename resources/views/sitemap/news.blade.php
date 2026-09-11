@@ -1,7 +1,6 @@
 {!! '<' . '?xml version="1.0" encoding="UTF-8"?' . '>' !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 
     @foreach($articles as $article)
     <url>
@@ -17,12 +16,6 @@
             <news:keywords><![CDATA[{{ $article->keywords }}]]></news:keywords>
             @endif
         </news:news>
-        @if(!empty($article->thumbnail_url))
-        <image:image>
-            <image:loc>{{ $article->thumbnail_url }}</image:loc>
-            <image:title><![CDATA[{{ $article->title }}]]></image:title>
-        </image:image>
-        @endif
     </url>
     @endforeach
 

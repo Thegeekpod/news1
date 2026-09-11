@@ -55,6 +55,7 @@ class SitemapTest extends TestCase
         $response->assertSee('/category/national', false);
         $response->assertSee('/article/national-election-latest-news', false);
         $response->assertSee('/tag/election', false);
+        $response->assertDontSee('<image:image', false);
     }
 
     public function test_sitemap_news_renders_valid_xml()

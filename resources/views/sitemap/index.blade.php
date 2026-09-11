@@ -1,6 +1,5 @@
 {!! '<' . '?xml version="1.0" encoding="UTF-8"?' . '>' !!}
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     {{-- 1. Static Core Pages --}}
     <url>
@@ -45,12 +44,6 @@
         <lastmod>{{ ($article->updated_at ?? $article->published_at ?? now())->toIso8601String() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
-        @if(!empty($article->thumbnail_url))
-        <image:image>
-            <image:loc>{{ $article->thumbnail_url }}</image:loc>
-            <image:title><![CDATA[{{ $article->title }}]]></image:title>
-        </image:image>
-        @endif
     </url>
     @endforeach
 
