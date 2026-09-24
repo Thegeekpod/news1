@@ -196,10 +196,89 @@
       </div>
     </div>
 
-    <!-- Submit Form -->
-    <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 20px;">
-      <button type="submit" class="btn-admin btn-admin-primary">Save All Settings</button>
+    <!-- Gold, Silver & Sensex Market Rates Settings Section -->
+    <div id="market-rates-settings" style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h3 class="card-title" style="font-size: 16px; color: #eab308; margin: 0; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-coins"></i> সোনা, রূপো ও সেনসেক্স বাজার দর (Market Rates)
+          </h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px; margin-bottom: 0;">
+            প্রতিদিন সকাল ০৯:৩০ ও বিকাল ০৪:৪৫ মিনিটে স্বয়ংক্রিয়ভাবে সোনার দর, রূপোর দর ও সেনসেক্স-নিফটি লাইভ ডাটা ফেচ হয়।
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <a href="{{ route('market.rates') }}" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 6px 14px; font-size: 12px;">
+            <i class="fas fa-external-link-alt"></i> লাইভ পেজ দেখুন
+          </a>
+        </div>
+      </div>
+
+      @php
+        $mRates = \App\Http\Controllers\MarketController::getMarketData();
+      @endphp
+
+      <!-- Current Rates Quick Badge Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; background: rgba(0, 0, 0, 0.25); padding: 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted);">২৪K সোনা (১০ গ্রাম)</div>
+          <div style="font-size: 18px; font-weight: 800; color: #eab308; margin-top: 2px;">₹{{ $mRates['gold_24k_formatted'] ?? '৭৬,৮৫০' }}</div>
+          <div style="font-size: 11px; color: #94a3b8;">{{ $mRates['gold_change_formatted'] ?? '+৩৫০' }}</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted);">২২K সোনা (১০ গ্রাম)</div>
+          <div style="font-size: 18px; font-weight: 800; color: #f59e0b; margin-top: 2px;">₹{{ $mRates['gold_22k_formatted'] ?? '৭০,৪৫০' }}</div>
+          <div style="font-size: 11px; color: #94a3b8;">১ ভরি: ₹{{ $mRates['gold_22k_bhori_formatted'] ?? '৫৬,৩৬০' }}</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted);">রূপো (১ কেজি)</div>
+          <div style="font-size: 18px; font-weight: 800; color: #cbd5e1; margin-top: 2px;">₹{{ $mRates['silver_1kg_formatted'] ?? '৯৪,৫০০' }}</div>
+          <div style="font-size: 11px; color: #94a3b8;">১০ গ্রাম: ₹{{ $mRates['silver_10g_formatted'] ?? '৯৪৫' }}</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted);">BSE সেনসেক্স</div>
+          <div style="font-size: 18px; font-weight: 800; color: #60a5fa; margin-top: 2px;">{{ $mRates['sensex']['price_formatted'] ?? '৭৭,১৫০' }}</div>
+          <div style="font-size: 11px; color: {{ ($mRates['sensex']['is_positive'] ?? true) ? '#34d399' : '#f87171' }};">{{ $mRates['sensex']['change_percent_formatted'] ?? '+০.৪৪%' }}</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; color: var(--text-muted);">সর্বশেষ আপডেট</div>
+          <div style="font-size: 13px; font-weight: 700; color: #ffffff; margin-top: 4px;">{{ $mRates['last_updated_bn'] ?? 'আজ' }}</div>
+          <div style="font-size: 11px; color: #34d399;">ডেলি রুটিন সক্রিয়</div>
+        </div>
+      </div>
+
+      <div class="form-row form-row-2">
+        <div class="form-group">
+          <label for="market_base_gold_24k" class="form-label">২৪K সোনার বেস রেট (১০ গ্রাম)</label>
+          <input type="number" name="market_base_gold_24k" id="market_base_gold_24k" class="form-control" value="{{ old('market_base_gold_24k', $settings['market_base_gold_24k'] ?? '76850') }}" placeholder="76850">
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">কলকাতার স্থানীয় জুয়েলার্স বেঞ্চমার্ক। লাইভ মার্কেট ওঠানামা এই মূল্যের সাথে সিঙ্ক হয়।</div>
+        </div>
+
+        <div class="form-group">
+          <label for="market_base_silver_1kg" class="form-label">রূপোর বেস রেট (১ কেজি)</label>
+          <input type="number" name="market_base_silver_1kg" id="market_base_silver_1kg" class="form-control" value="{{ old('market_base_silver_1kg', $settings['market_base_silver_1kg'] ?? '94500') }}" placeholder="94500">
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">১ কেজি রূপোর বারের বেস রেট।</div>
+        </div>
+      </div>
     </div>
+
+    <!-- Submit Form -->
+    <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--border-color); padding-top: 20px;">
+      <div>
+        <!-- Separate form for immediate market refresh -->
+        <button type="submit" form="refresh-market-form" class="btn-admin btn-admin-secondary" style="background: rgba(234, 179, 8, 0.15); border-color: rgba(234, 179, 8, 0.4); color: #facc15;">
+          <i class="fas fa-sync-alt"></i> এখনই মার্কেট রেট ফেচ করুন (Fetch Live Now)
+        </button>
+      </div>
+      <div>
+        <button type="submit" class="btn-admin btn-admin-primary">Save All Settings</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Hidden form to trigger market rates refresh without altering other unsaved fields -->
+  <form id="refresh-market-form" action="{{ route('admin.settings.refresh_market') }}" method="POST" style="display: none;">
+    @csrf
   </form>
 </div>
 @endsection

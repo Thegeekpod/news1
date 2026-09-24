@@ -35,11 +35,11 @@
       </p>
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="{{ route('sitemap.index') }}" target="_blank" class="btn-admin btn-admin-primary" style="background: #2563eb; border-color: #3b82f6;">
-        <i class="fas fa-external-link-alt"></i> View Live Sitemap.xml
+      <a href="{{ route('admin.sitemap.index') }}" class="btn-admin" style="background: linear-gradient(135deg, #4f46e5, #3b82f6); color: #fff; font-weight: 600;">
+        <i class="fas fa-sliders-h"></i> Sitemap Control Panel
       </a>
-      <a href="{{ route('sitemap.news') }}" target="_blank" class="btn-admin btn-admin-secondary">
-        <i class="fas fa-newspaper"></i> Google News XML
+      <a href="{{ route('sitemap.index') }}" target="_blank" class="btn-admin btn-admin-primary" style="background: #2563eb; border-color: #3b82f6;">
+        <i class="fas fa-external-link-alt"></i> View Sitemap.xml
       </a>
     </div>
   </div>
@@ -68,55 +68,20 @@
     </div>
   </div>
 
-  <!-- Sitemap URLs Table -->
+  <!-- Single Unified Sitemap URL -->
   <div style="background: rgba(0, 0, 0, 0.25); border-radius: 8px; padding: 14px 18px; border: 1px solid rgba(255, 255, 255, 0.08);">
-    <div style="font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 10px;">
-      <i class="fas fa-link" style="color: #60a5fa;"></i> Search Engine Ready Sitemap Endpoints:
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 8px;">
-      <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <span style="font-weight: 600; color: #93c5fd; font-size: 13px;">Full Sitemap (Main):</span>
-          <code style="margin-left: 8px; color: #f8fafc; font-size: 12px;">{{ route('sitemap.index') }}</code>
-        </div>
-        <div style="display: flex; gap: 6px;">
-          <button onclick="copyToClipboard('{{ route('sitemap.index') }}')" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-copy"></i> Copy
-          </button>
-          <a href="{{ route('sitemap.index') }}" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-external-link-alt"></i> Open
-          </a>
-        </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+      <div>
+        <span style="font-weight: 600; color: #93c5fd; font-size: 13px;">Unified Dynamic XML Sitemap:</span>
+        <code style="margin-left: 8px; color: #f8fafc; font-size: 12px;">{{ route('sitemap.index') }}</code>
       </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <span style="font-weight: 600; color: #86efac; font-size: 13px;">Google News Sitemap:</span>
-          <code style="margin-left: 8px; color: #f8fafc; font-size: 12px;">{{ route('sitemap.news') }}</code>
-        </div>
-        <div style="display: flex; gap: 6px;">
-          <button onclick="copyToClipboard('{{ route('sitemap.news') }}')" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-copy"></i> Copy
-          </button>
-          <a href="{{ route('sitemap.news') }}" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-external-link-alt"></i> Open
-          </a>
-        </div>
-      </div>
-
-      <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 6px; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <span style="font-weight: 600; color: #cbd5e1; font-size: 13px;">Articles Only:</span>
-          <code style="margin-left: 8px; color: #cbd5e1; font-size: 12px;">{{ route('sitemap.articles') }}</code>
-        </div>
-        <div style="display: flex; gap: 6px;">
-          <button onclick="copyToClipboard('{{ route('sitemap.articles') }}')" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-copy"></i> Copy
-          </button>
-          <a href="{{ route('sitemap.articles') }}" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
-            <i class="fas fa-external-link-alt"></i> Open
-          </a>
-        </div>
+      <div style="display: flex; gap: 6px;">
+        <button onclick="copyToClipboard('{{ route('sitemap.index') }}')" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+        <a href="{{ route('sitemap.index') }}" target="_blank" class="btn-admin btn-admin-secondary" style="padding: 4px 10px; font-size: 11px;">
+          <i class="fas fa-external-link-alt"></i> Open
+        </a>
       </div>
     </div>
   </div>

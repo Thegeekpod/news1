@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\AdController as AdminAdController;
 use App\Http\Controllers\Admin\NewsletterController as AdminNewsletterController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\Admin\SeoController as AdminSeoController;
+use App\Http\Controllers\Admin\SitemapController as AdminSitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +38,16 @@ Route::get('/weather/refresh', [HomeController::class, 'refreshWeather'])->name(
 Route::get('/videos', [HomeController::class, 'videos'])->name('videos.all');
 Route::get('/top-stories', [HomeController::class, 'topStories'])->name('lead-news.all');
 Route::get('/market/top-stocks', [MarketController::class, 'getTopStocks'])->name('market.top-stocks');
+Route::get('/market', [MarketController::class, 'index'])->name('market.rates');
+Route::get('/market-rates', [MarketController::class, 'index']);
+Route::get('/gold-silver-sensex', [MarketController::class, 'index']);
 
-// Dynamic XML Sitemaps
+// Single Unified Dynamic XML Sitemap
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
-Route::get('/sitemap-news.xml', [SitemapController::class, 'news'])->name('sitemap.news');
-Route::get('/sitemap-articles.xml', [SitemapController::class, 'articles'])->name('sitemap.articles');
-Route::get('/sitemap-categories.xml', [SitemapController::class, 'categories'])->name('sitemap.categories');
-Route::get('/sitemap-tags.xml', [SitemapController::class, 'tags'])->name('sitemap.tags');
+Route::permanentRedirect('/sitemap-news.xml', '/sitemap.xml');
+Route::permanentRedirect('/sitemap-articles.xml', '/sitemap.xml');
+Route::permanentRedirect('/sitemap-categories.xml', '/sitemap.xml');
+Route::permanentRedirect('/sitemap-tags.xml', '/sitemap.xml');
 
 /*
 |--------------------------------------------------------------------------
@@ -115,8 +119,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
     Route::post('/settings', [AdminSettingsController::class, 'update'])->name('admin.settings.update');
     Route::post('/settings/test-weather-api', [AdminSettingsController::class, 'testApi'])->name('admin.settings.test_weather_api');
+    Route::post('/settings/refresh-market', [AdminSettingsController::class, 'refreshMarketRates'])->name('admin.settings.refresh_market');
     
     // Newsletter subscribers
     Route::get('/newsletter', [AdminNewsletterController::class, 'index'])->name('admin.newsletter');
+    
+    // Sitemap Control
+    Route::get('/sitemap', [AdminSitemapController::class, 'index'])->name('admin.sitemap.index');
+    Route::post('/sitemap', [AdminSitemapController::class, 'update'])->name('admin.sitemap.update');
+    Route::post('/sitemap/clear-cache', [AdminSitemapController::class, 'clearCache'])->name('admin.sitemap.clear_cache');
+    Route::post('/sitemap/update-robots', [AdminSitemapController::class, 'updateRobots'])->name('admin.sitemap.update_robots');
+    Route::post('/sitemap/sync-robots', [AdminSitemapController::class, 'syncRobots'])->name('admin.sitemap.sync_robots');
+    Route::post('/sitemap/test', [AdminSitemapController::class, 'testEndpoint'])->name('admin.sitemap.test');
 });
 

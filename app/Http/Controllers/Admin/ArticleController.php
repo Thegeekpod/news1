@@ -72,6 +72,8 @@ class ArticleController extends Controller
             $article->tags()->sync($request->tags);
         }
 
+        \App\Http\Controllers\SitemapController::clearCache();
+
         return redirect()->route('admin.articles.index')->with('success', 'Article created successfully.');
     }
 
@@ -136,6 +138,8 @@ class ArticleController extends Controller
 
         $article->tags()->sync($request->tags ?? []);
 
+        \App\Http\Controllers\SitemapController::clearCache();
+
         return redirect()->route('admin.articles.index')->with('success', 'Article updated successfully.');
     }
 
@@ -149,6 +153,7 @@ class ArticleController extends Controller
             }
         }
         $article->delete();
+        \App\Http\Controllers\SitemapController::clearCache();
         return redirect()->route('admin.articles.index')->with('success', 'Article deleted successfully.');
     }
 

@@ -42,6 +42,7 @@ class CategoryController extends Controller
             'display_order' => $request->display_order,
         ]);
 
+        \App\Http\Controllers\SitemapController::clearCache();
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
 
@@ -75,12 +76,14 @@ class CategoryController extends Controller
             'display_order' => $request->display_order,
         ]);
 
+        \App\Http\Controllers\SitemapController::clearCache();
         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
+        \App\Http\Controllers\SitemapController::clearCache();
         return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
     }
 }

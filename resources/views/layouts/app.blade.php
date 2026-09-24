@@ -28,7 +28,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {!! $g_seo->other_tags !!}
   @endif
   <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url('/sitemap.xml') }}">
-  <link rel="sitemap" type="application/xml" title="Google News Sitemap" href="{{ url('/sitemap-news.xml') }}">
   @if(!empty($g_settings['site_favicon']))
     <link rel="shortcut icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
     <link rel="icon" href="{{ asset($g_settings['site_favicon']) }}" type="image/x-icon">
@@ -58,8 +57,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <i class="fas fa-cloud-sun"></i>
           <span>{{ $g_settings['weather_location'] ?? 'কলকাতা' }} {{ BengaliHelper::toBengaliNumerals($g_settings['weather_temp'] ?? '৩২') }}°C ({{ $g_settings['weather_desc'] ?? 'রৌদ্রোজ্জ্বল' }})</span>
         </div>
+
       </div>
       <div class="topbar-right">
+        <a href="{{ route('market.rates') }}" class="topbar-market-btn" title="আজকের সোনা, রূপো ও সেনসেক্স বাজার দর">
+          <i class="fas fa-coins" style="color: #eab308;"></i>
+          <span>বাজার দর</span>
+        </a>
         <button class="theme-toggle-btn">
           <i class="fas fa-moon"></i>
           <span class="theme-label">ডার্ক মোড</span>
@@ -109,6 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           @endforeach
         @endif
         <li><a href="{{ route('videos.all') }}" class="nav-link @if(request()->routeIs('videos.all')) active @endif">ভিডিও</a></li>
+        <li><a href="{{ route('market.rates') }}" class="nav-link @if(request()->routeIs('market.rates')) active @endif"><i class="fas fa-coins" style="color: #eab308; margin-right: 4px;"></i> বাজার দর</a></li>
       </ul>
     </div>
   </nav>

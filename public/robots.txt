@@ -5,4 +5,3 @@ Disallow: /login
 Disallow: /logout
 
 Sitemap: https://news1.co.in/sitemap.xml
-Sitemap: https://news1.co.in/sitemap-news.xml

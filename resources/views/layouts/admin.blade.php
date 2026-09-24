@@ -48,6 +48,9 @@
       <li class="{{ request()->routeIs('admin.seo.*') ? 'active' : '' }}">
         <a href="{{ route('admin.seo.index') }}"><i class="fas fa-globe"></i> SEO Details</a>
       </li>
+      <li class="{{ request()->routeIs('admin.sitemap.*') ? 'active' : '' }}">
+        <a href="{{ route('admin.sitemap.index') }}"><i class="fas fa-sitemap"></i> Sitemap Control</a>
+      </li>
       <li class="{{ request()->routeIs('admin.settings') ? 'active' : '' }}">
         <a href="{{ route('admin.settings') }}"><i class="fas fa-cogs"></i> Settings Panel</a>
       </li>

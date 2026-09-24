@@ -78,6 +78,11 @@ class AppServiceProvider extends ServiceProvider
             $currentPath = \App\Models\SeoSetting::normalizePath(request()->getPathInfo());
             $currentSeo = \App\Models\SeoSetting::getForPath($currentPath);
 
+            // Market rates summary for topbar
+            $marketSummary = \Illuminate\Support\Facades\Cache::remember('g_market_topbar_rates', 300, function () {
+                return \App\Http\Controllers\MarketController::getMarketSummary();
+            });
+
             $view->with([
                 'g_categories' => \App\Models\Category::orderBy('display_order', 'asc')->get(),
                 'g_tickers' => $combinedTickers,
@@ -86,6 +91,7 @@ class AppServiceProvider extends ServiceProvider
                 'g_settings' => $settings,
                 'g_seo' => $currentSeo,
                 'g_ads' => \App\Models\Advertisement::where('is_active', true)->get()->groupBy('slot_name'),
+                'g_market' => $marketSummary,
             ]);
         });
     }

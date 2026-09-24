@@ -176,6 +176,30 @@ body.font-size-sm {
   color: var(--brand-red);
 }
 
+/* Topbar Market Button (Placed right before Dark Mode button) */
+.topbar-market-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.topbar-market-btn:hover {
+  background: rgba(234, 179, 8, 0.2);
+  border-color: #eab308;
+  color: #fef08a;
+  transform: translateY(-1px);
+}
+
 .live-tv-badge {
   display: inline-flex;
   align-items: center;

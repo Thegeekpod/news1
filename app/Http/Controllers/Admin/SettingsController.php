@@ -383,4 +383,17 @@ class SettingsController extends Controller
         }
         return false;
     }
+
+    /**
+     * Manually trigger live Gold, Silver & Sensex Market rates update
+     */
+    public function refreshMarketRates()
+    {
+        try {
+            \App\Http\Controllers\MarketController::fetchAndStoreRates(true);
+            return redirect()->route('admin.settings')->with('success', 'সোনা, রূপো ও সেনসেক্স বাজার দর সফলভাবে আপডেট করা হয়েছে!');
+        } catch (\Throwable $e) {
+            return redirect()->route('admin.settings')->with('error', 'মার্কেট দর আপডেট করতে ব্যর্থ: ' . $e->getMessage());
+        }
+    }
 }
