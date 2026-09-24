@@ -568,15 +568,18 @@
     </div>
   </div>
 
-  <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+  <div class="market-content-grid">
     <!-- Gold Rates Breakdown Table -->
     <div class="market-table-section">
       <div class="section-heading-wrap">
         <h3><i class="fas fa-coins" style="color: #eab308;"></i> কলকাতায় আজকের সোনার দর তালিকা</h3>
-        <span style="font-size: 0.85rem; color: var(--text-muted, #64748b);">*জিএসটি ও মেকিং চার্জ বাদে</span>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="table-scroll-hint"><i class="fas fa-arrows-left-right"></i> স্ক্রোলযোগ্য</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted, #64748b);">*জিএসটি ও মেকিং চার্জ বাদে</span>
+        </div>
       </div>
 
-      <div style="overflow-x: auto;">
+      <div class="market-table-wrapper">
         <table class="custom-market-table">
           <thead>
             <tr>
@@ -625,10 +628,13 @@
     <div class="market-table-section">
       <div class="section-heading-wrap">
         <h3><i class="fas fa-gem" style="color: #94a3b8;"></i> কলকাতায় আজকের রূপোর দর তালিকা</h3>
-        <span style="font-size: 0.85rem; color: var(--text-muted, #64748b);">*জিএসটি বাদে</span>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="table-scroll-hint"><i class="fas fa-arrows-left-right"></i> স্ক্রোলযোগ্য</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted, #64748b);">*জিএসটি বাদে</span>
+        </div>
       </div>
 
-      <div style="overflow-x: auto;">
+      <div class="market-table-wrapper">
         <table class="custom-market-table">
           <thead>
             <tr>
@@ -669,10 +675,13 @@
     <div class="market-table-section">
       <div class="section-heading-wrap">
         <h3><i class="fas fa-map-marker-alt" style="color: #ef4444;"></i> ভারতের বিভিন্ন মেট্রো শহরে সোনার দর তুলনা</h3>
-        <span style="font-size: 0.85rem; color: var(--text-muted, #64748b);">প্রতি ১০ গ্রাম হিসেবে</span>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="table-scroll-hint"><i class="fas fa-arrows-left-right"></i> স্ক্রোলযোগ্য</span>
+          <span style="font-size: 0.82rem; color: var(--text-muted, #64748b);">প্রতি ১০ গ্রাম হিসেবে</span>
+        </div>
       </div>
 
-      <div style="overflow-x: auto;">
+      <div class="market-table-wrapper">
         <table class="custom-market-table">
           <thead>
             <tr>
@@ -700,10 +709,13 @@
     <div class="market-table-section">
       <div class="section-heading-wrap">
         <h3><i class="fas fa-arrow-trend-up" style="color: #10b981;"></i> ভারতের শীর্ষ ১০টি কোম্পানির শেয়ারের দর (NSE / BSE)</h3>
-        <span style="font-size: 0.85rem; color: #10b981; font-weight: 600;"><i class="fas fa-bolt"></i> অটো-আপডেট</span>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span class="table-scroll-hint"><i class="fas fa-arrows-left-right"></i> স্ক্রোলযোগ্য</span>
+          <span style="font-size: 0.82rem; color: #10b981; font-weight: 600;"><i class="fas fa-bolt"></i> অটো-আপডেট</span>
+        </div>
       </div>
 
-      <div style="overflow-x: auto;">
+      <div class="market-table-wrapper">
         <table class="custom-market-table">
           <thead>
             <tr>
@@ -745,22 +757,22 @@
         <h3><i class="fas fa-shield-alt" style="color: #8b5cf6;"></i> সোনা কেনার সময় জরুরি নির্দেশিকা ও সতর্কতা</h3>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-        <div style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 10px; padding: 18px;">
+      <div class="guide-cards-grid">
+        <div class="guide-card-item">
           <h4 style="font-size: 1.1rem; color: #eab308; margin-bottom: 8px;"><i class="fas fa-award"></i> BIS ৯১৬ হলমার্কিং দেখে নিন</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
             সোনার গহনা কেনার সময় অবশ্যই BIS ত্রিভুজ লোগো এবং ৯১৬ (২২ ক্যারেট) অথবা ৭৫০ (১৮ ক্যারেট) চিহ্ন রয়েছে কিনা তা যাচাই করে নিন। সরকার কর্তৃক এটি বাধ্যতামূলক।
           </p>
         </div>
 
-        <div style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 10px; padding: 18px;">
+        <div class="guide-card-item">
           <h4 style="font-size: 1.1rem; color: #3b82f6; margin-bottom: 8px;"><i class="fas fa-barcode"></i> ৬ সংখ্যার HUID কোড</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
             প্রতিটি হলমার্কযুক্ত সোনার গহনায় ৬ সংখ্যার আলফানিউমেরিক HUID (Hallmark Unique Identification) কোড থাকে। BIS Care অ্যাপের মাধ্যমে আপনি এই কোডটি দিয়ে সত্যতা যাচাই করতে পারেন।
           </p>
         </div>
 
-        <div style="background: rgba(0,0,0,0.02); border: 1px solid var(--border-color); border-radius: 10px; padding: 18px;">
+        <div class="guide-card-item">
           <h4 style="font-size: 1.1rem; color: #10b981; margin-bottom: 8px;"><i class="fas fa-file-invoice-dollar"></i> আসল পাকা বিল সংগ্রহ করুন</h4>
           <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
             সোনার ওজন, ক্যারেটের বিশুদ্ধতা, মেকিং চার্জ এবং ৩% জিএসটি উল্লেখ থাকা অফিশিয়াল পাকা ট্যাক্স ইনভয়েস বিল বাধ্যতামূলকভাবে জুয়েলার্সের কাছ থেকে সংগ্রহ করুন।
