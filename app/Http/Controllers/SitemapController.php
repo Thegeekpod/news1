@@ -61,23 +61,13 @@ class SitemapController extends Controller
                 ->header('Content-Type', 'application/xml; charset=utf-8');
         }
 
-        if (request()->has('nocache') || request()->has('v') || request()->has('refresh')) {
-            Cache::forget('sitemap_xml_index');
-        }
+        Cache::forget('sitemap_xml_index');
 
-        $cacheMinutes = (int) Setting::get('sitemap_cache_duration', 60);
+        $content = trim($this->buildIndexXml());
 
-        if ($cacheMinutes > 0) {
-            $content = Cache::remember('sitemap_xml_index', now()->addMinutes($cacheMinutes), function () {
-                return trim($this->buildIndexXml());
-            });
-        } else {
-            $content = trim($this->buildIndexXml());
-        }
-
-        return response(trim($content), 200)
+        return response($content, 200)
             ->header('Content-Type', 'application/xml; charset=utf-8')
-            ->header('Cache-Control', 'no-transform, public, max-age=' . ($cacheMinutes > 0 ? $cacheMinutes * 60 : 3600));
+            ->header('Cache-Control', 'no-cache, no-store, must-revalidate');
     }
 
     /**
@@ -104,7 +94,7 @@ class SitemapController extends Controller
         $includeCategories = Setting::get('sitemap_categories_enabled', '1') === '1';
         $includeTags = Setting::get('sitemap_tags_enabled', '1') === '1';
         $includeCustomPages = Setting::get('sitemap_custom_pages_enabled', '1') === '1';
-        $includeImages = Setting::get('sitemap_include_images', '1') === '1';
+        $includeImages = false;
 
         // Exclusions
         $excludedCatIds = json_decode(Setting::get('sitemap_excluded_categories', '[]'), true) ?: [];

@@ -25,7 +25,7 @@ class SitemapController extends Controller
             'sitemap_categories_enabled' => '1',
             'sitemap_tags_enabled' => '1',
             'sitemap_custom_pages_enabled' => '1',
-            'sitemap_include_images' => '1',
+            'sitemap_include_images' => '0',
             'sitemap_ascii_slugs_only' => '1',
             'sitemap_exclude_empty_categories' => '0',
             'sitemap_exclude_empty_tags' => '0',
