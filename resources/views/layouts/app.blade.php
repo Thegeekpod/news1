@@ -49,15 +49,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="topbar">
     <div class="container topbar-wrapper">
       <div class="topbar-left">
-        <div class="topbar-item">
+        <div class="topbar-item topbar-date">
           <i class="far fa-calendar-alt"></i>
           <span id="current-bengali-date">{{ BengaliHelper::toBengaliDate(now()) }}</span>
         </div>
-        <div class="topbar-item">
+        <div class="topbar-item topbar-weather">
           <i class="fas fa-cloud-sun"></i>
-          <span>{{ $g_settings['weather_location'] ?? 'কলকাতা' }} {{ BengaliHelper::toBengaliNumerals($g_settings['weather_temp'] ?? '৩২') }}°C ({{ $g_settings['weather_desc'] ?? 'রৌদ্রোজ্জ্বল' }})</span>
+          @php
+              $fullLoc = $g_settings['weather_location'] ?? 'কলকাতা';
+              $locParts = explode(',', $fullLoc);
+              $shortLoc = trim($locParts[0]);
+              $stateLoc = isset($locParts[1]) ? (', ' . trim($locParts[1])) : '';
+          @endphp
+          <span>
+            <span class="weather-city">{{ $shortLoc }}</span><span class="weather-state">{{ $stateLoc }}</span>
+            <span class="weather-temp">{{ BengaliHelper::toBengaliNumerals($g_settings['weather_temp'] ?? '৩২') }}°C</span>
+            <span class="weather-desc">({{ $g_settings['weather_desc'] ?? 'রৌদ্রোজ্জ্বল' }})</span>
+          </span>
         </div>
-
       </div>
       <div class="topbar-right">
         <a href="{{ route('market.rates') }}" class="topbar-market-btn" title="আজকের সোনা, রূপো ও সেনসেক্স বাজার দর">
