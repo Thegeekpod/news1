@@ -86,7 +86,7 @@ class SitemapController extends Controller
         $robotsExists = File::exists($robotsPath);
         $robotsContent = $robotsExists ? File::get($robotsPath) : '';
         $robotsWritable = File::isWritable($robotsPath) || (! $robotsExists && File::isWritable(public_path()));
-        $robotsHasMainSitemap = str_contains($robotsContent, 'sitemap.xml');
+        $robotsHasMainSitemap = str_contains($robotsContent, 'sitemap-1.xml') || str_contains($robotsContent, 'sitemap.xml');
 
         return view('admin.sitemap.index', compact(
             'settings',
@@ -259,7 +259,7 @@ class SitemapController extends Controller
         foreach ($lines as $line) {
             $trimmed = trim($line);
             if (str_starts_with(strtolower($trimmed), 'sitemap:')) {
-                if (str_contains($trimmed, 'sitemap.xml')) {
+                if (str_contains($trimmed, 'sitemap-1.xml') || str_contains($trimmed, 'sitemap.xml')) {
                     $cleanLines[] = $mainLine;
                     $hasMain = true;
                 }

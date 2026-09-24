@@ -42,12 +42,14 @@ Route::get('/market', [MarketController::class, 'index'])->name('market.rates');
 Route::get('/market-rates', [MarketController::class, 'index']);
 Route::get('/gold-silver-sensex', [MarketController::class, 'index']);
 
-// Single Unified Dynamic XML Sitemap
-Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
-Route::permanentRedirect('/sitemap-news.xml', '/sitemap.xml');
-Route::permanentRedirect('/sitemap-articles.xml', '/sitemap.xml');
-Route::permanentRedirect('/sitemap-categories.xml', '/sitemap.xml');
-Route::permanentRedirect('/sitemap-tags.xml', '/sitemap.xml');
+// Single Unified Dynamic XML Sitemap (/sitemap-1.xml)
+Route::get('/sitemap-1.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemap-1', [SitemapController::class, 'index']);
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
+Route::permanentRedirect('/sitemap-news.xml', '/sitemap-1.xml');
+Route::permanentRedirect('/sitemap-articles.xml', '/sitemap-1.xml');
+Route::permanentRedirect('/sitemap-categories.xml', '/sitemap-1.xml');
+Route::permanentRedirect('/sitemap-tags.xml', '/sitemap-1.xml');
 
 /*
 |--------------------------------------------------------------------------

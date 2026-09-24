@@ -116,11 +116,11 @@
           </span>
         @endif
         <span style="background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); font-size: 11px; padding: 4px 10px; border-radius: 999px; font-weight: 600;">
-          <i class="fas fa-check"></i> Single Unified XML (/sitemap.xml)
+          <i class="fas fa-check"></i> Single Unified XML (/sitemap-1.xml)
         </span>
       </div>
       <p style="font-size: 13px; color: var(--text-muted); margin-top: 8px; max-width: 750px; line-height: 1.5;">
-        All website URLs (articles, categories, tags, and custom pages) are unified into one single XML sitemap at <code>/sitemap.xml</code>. No multiple sitemaps needed.
+        All website URLs (articles, categories, tags, and custom pages) are unified into one single XML sitemap at <code>/sitemap-1.xml</code>. No multiple sitemaps needed.
       </p>
     </div>
 
@@ -719,7 +719,7 @@
           <strong style="color: #ffffff; font-size: 14px;">Google Search Console</strong>
         </div>
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
-          Submit <code>sitemap.xml</code> in your Google Search Console to index all your news articles.
+          Submit <code>sitemap-1.xml</code> in your Google Search Console to index all your news articles.
         </p>
         <a href="https://search.google.com/search-console/sitemaps" target="_blank" class="btn-admin btn-admin-primary" style="font-size: 12px; padding: 6px 14px;">
           <i class="fas fa-external-link-alt"></i> Open Google Sitemaps Console
@@ -733,7 +733,7 @@
           <strong style="color: #ffffff; font-size: 14px;">Bing &amp; Yahoo Webmaster Tools</strong>
         </div>
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
-          Bing powers Yahoo &amp; Copilot search. Submit <code>sitemap.xml</code> directly here.
+          Bing powers Yahoo &amp; Copilot search. Submit <code>sitemap-1.xml</code> directly here.
         </p>
         <a href="https://www.bing.com/webmasters/sitemaps" target="_blank" class="btn-admin btn-admin-primary" style="background: #0284c7; border-color: #0ea5e9; font-size: 12px; padding: 6px 14px;">
           <i class="fas fa-external-link-alt"></i> Open Bing Sitemaps Console
@@ -866,7 +866,7 @@ function testSitemap() {
   const panel = document.getElementById('test-results-panel');
   const content = document.getElementById('test-results-content');
   panel.style.display = 'block';
-  content.innerHTML = `<div style="color: #94a3b8; font-size: 13px;"><i class="fas fa-spinner fa-spin"></i> Validating /sitemap.xml...</div>`;
+  content.innerHTML = `<div style="color: #94a3b8; font-size: 13px;"><i class="fas fa-spinner fa-spin"></i> Validating /sitemap-1.xml...</div>`;
 
   const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
 
