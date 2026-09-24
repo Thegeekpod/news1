@@ -61,17 +61,21 @@ class SitemapController extends Controller
                 ->header('Content-Type', 'application/xml; charset=utf-8');
         }
 
+        if (request()->has('nocache') || request()->has('v') || request()->has('refresh')) {
+            Cache::forget('sitemap_xml_index');
+        }
+
         $cacheMinutes = (int) Setting::get('sitemap_cache_duration', 60);
 
         if ($cacheMinutes > 0) {
             $content = Cache::remember('sitemap_xml_index', now()->addMinutes($cacheMinutes), function () {
-                return $this->buildIndexXml();
+                return trim($this->buildIndexXml());
             });
         } else {
-            $content = $this->buildIndexXml();
+            $content = trim($this->buildIndexXml());
         }
 
-        return response($content, 200)
+        return response(trim($content), 200)
             ->header('Content-Type', 'application/xml; charset=utf-8')
             ->header('Cache-Control', 'no-transform, public, max-age=' . ($cacheMinutes > 0 ? $cacheMinutes * 60 : 3600));
     }

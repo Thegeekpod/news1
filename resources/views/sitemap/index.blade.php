@@ -1,10 +1,9 @@
 {!! '<' . '?xml version="1.0" encoding="UTF-8"?' . '>' !!}
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        @if($includeImages) xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" @endif>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     {{-- 1. Static Core Pages --}}
     <url>
-        <loc>{{ url('/') }}</loc>
+        <loc>{{ rtrim(url('/'), '/') }}/</loc>
         <lastmod>{{ $siteLastMod ? $siteLastMod->toIso8601String() : now()->toIso8601String() }}</lastmod>
         <changefreq>{{ $homeFreq ?? 'always' }}</changefreq>
         <priority>{{ $homePriority ?? '1.0' }}</priority>
@@ -55,12 +54,6 @@
         <lastmod>{{ ($article->updated_at ?? $article->published_at ?? now())->toIso8601String() }}</lastmod>
         <changefreq>{{ $articlesFreq ?? 'weekly' }}</changefreq>
         <priority>{{ $articlesPriority ?? '0.7' }}</priority>
-        @if(($includeImages ?? false) && !empty($article->thumbnail_url))
-        <image:image>
-            <image:loc>{{ $article->thumbnail_url }}</image:loc>
-            <image:title><![CDATA[{{ $article->title }}]]></image:title>
-        </image:image>
-        @endif
     </url>
     @endforeach
     @endif

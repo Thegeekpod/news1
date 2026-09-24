@@ -71,7 +71,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="topbar-right">
         <a href="{{ route('market.rates') }}" class="topbar-market-btn" title="আজকের সোনা, রূপো ও সেনসেক্স বাজার দর">
           <i class="fas fa-coins" style="color: #eab308;"></i>
-          <span>বাজার দর</span>
+          <span class="topbar-market-label">বাজার দর</span>
         </a>
         <button class="theme-toggle-btn">
           <i class="fas fa-moon"></i>
