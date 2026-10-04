@@ -14,87 +14,87 @@
         'id' => 0,
         'type' => 'gold',
         'icon' => 'fas fa-coins',
-        'rank' => '২৪K সোনা',
+        'rank' => '২৪K',
         'rank_bg' => '#eab308',
         'rank_color' => '#000000',
         'border_color' => '#eab308',
-        'symbol' => '২৪ ক্যারেট খাঁটি সোনা',
-        'name' => '৯৯.৯% বিশুদ্ধ বুলিয়ন রেট',
+        'symbol' => '২৪ ক্যারেট সোনা',
+        'name' => '৯৯.৯% খাঁটি বুলিয়ন রেট',
         'price' => '₹' . ($goldSilverData['gold_24k_formatted'] ?? '৭৭,২৬০'),
         'unit' => '/১০ গ্রাম',
         'sub_label' => '১ গ্রাম: ₹' . BengaliHelper::toBengaliNumerals(number_format(round($goldSilverData['gold_24k'] / 10))),
-        'badge' => ($goldSilverData['gold_change_formatted'] ?? '+৪১০') . ' (' . ($goldSilverData['gold_change_percent_formatted'] ?? '+০.৫৪%') . ')',
+        'badge' => ($goldSilverData['gold_change_percent_formatted'] ?? '+০.৫৪%'),
         'is_positive' => $goldSilverData['gold_is_positive'] ?? true,
       ],
       [
         'id' => 1,
         'type' => 'gold',
         'icon' => 'fas fa-gem',
-        'rank' => '২২K সোনা',
+        'rank' => '২২K',
         'rank_bg' => '#f59e0b',
         'rank_color' => '#ffffff',
         'border_color' => '#f59e0b',
-        'symbol' => '২২ ক্যারেট গহনা সোনা',
-        'name' => 'হলমার্ক ৯১৬ সরকারি মানসম্পন্ন',
+        'symbol' => '২২ ক্যারেট সোনা',
+        'name' => '৯১.৬% হলমার্ক গহনার সোনা',
         'price' => '₹' . ($goldSilverData['gold_22k_formatted'] ?? '৭০,৮২০'),
         'unit' => '/১০ গ্রাম',
         'sub_label' => '১ ভরি (৮ গ্রাম): ₹' . ($goldSilverData['gold_22k_bhori_formatted'] ?? '৫৬,৬৬০'),
-        'badge' => ($goldSilverData['gold_change_formatted'] ?? '+৪১০'),
+        'badge' => ($goldSilverData['gold_change_percent_formatted'] ?? '+০.৫১%'),
         'is_positive' => $goldSilverData['gold_is_positive'] ?? true,
       ],
       [
         'id' => 2,
         'type' => 'gold',
         'icon' => 'fas fa-medal',
-        'rank' => '১৮K সোনা',
+        'rank' => '১৮K',
         'rank_bg' => '#8b5cf6',
         'rank_color' => '#ffffff',
         'border_color' => '#8b5cf6',
         'symbol' => '১৮ ক্যারেট সোনা',
-        'name' => '৭৫.০% বিশুদ্ধ ডিজাইনার অলঙ্কার',
+        'name' => '৭৫% ডিজাইনার অলঙ্কার',
         'price' => '₹' . ($goldSilverData['gold_18k_formatted'] ?? '৫৭,৯৫০'),
         'unit' => '/১০ গ্রাম',
         'sub_label' => '১ গ্রাম: ₹' . BengaliHelper::toBengaliNumerals(number_format(round($goldSilverData['gold_18k'] / 10))),
-        'badge' => '৭৫% বিশুদ্ধ',
+        'badge' => '+০.৪৮%',
         'is_positive' => true,
       ],
       [
         'id' => 3,
         'type' => 'silver',
         'icon' => 'fas fa-cube',
-        'rank' => '১ কেজি রূপো',
+        'rank' => 'রূপো',
         'rank_bg' => '#38bdf8',
         'rank_color' => '#000000',
         'border_color' => '#38bdf8',
-        'symbol' => '১ কেজি খাঁটি রূপো (বার)',
-        'name' => '৯৯৯ খাঁটি রূপার বুলিয়ন বার',
+        'symbol' => 'রূপো (১ কেজি বার)',
+        'name' => '৯৯৯ খাঁটি রূপার বার',
         'price' => '₹' . ($goldSilverData['silver_1kg_formatted'] ?? '৯৫,৬৮০'),
         'unit' => '/১ কেজি',
         'sub_label' => '১০ গ্রাম: ₹' . ($goldSilverData['silver_10g_formatted'] ?? '৯৫৭'),
-        'badge' => ($goldSilverData['silver_change_formatted'] ?? '+১,১৮০'),
+        'badge' => ($goldSilverData['silver_change_percent_formatted'] ?? '+১.২৫%'),
         'is_positive' => $goldSilverData['silver_is_positive'] ?? true,
       ],
       [
         'id' => 4,
         'type' => 'silver',
         'icon' => 'fas fa-ring',
-        'rank' => '১০ গ্রাম রূপো',
+        'rank' => 'রূপো',
         'rank_bg' => '#94a3b8',
         'rank_color' => '#ffffff',
         'border_color' => '#94a3b8',
-        'symbol' => '১০ গ্রাম রূপো',
-        'name' => '১ গ্রাম: ₹' . BengaliHelper::toBengaliNumerals(number_format($goldSilverData['silver_1kg'] / 1000, 1)),
+        'symbol' => 'রূপো (১০ গ্রাম)',
+        'name' => 'খাঁটি রূপোর কয়েন ও গহনা',
         'price' => '₹' . ($goldSilverData['silver_10g_formatted'] ?? '৯৫৭'),
         'unit' => '/১০ গ্রাম',
         'sub_label' => '১ গ্রাম: ₹' . BengaliHelper::toBengaliNumerals(number_format($goldSilverData['silver_1kg'] / 1000, 1)),
-        'badge' => (($goldSilverData['silver_is_positive'] ?? true) ? '+' : '') . '₹' . BengaliHelper::toBengaliNumerals(number_format(abs($goldSilverData['silver_change']) / 100, 1)),
+        'badge' => ($goldSilverData['silver_change_percent_formatted'] ?? '+১.২৫%'),
         'is_positive' => $goldSilverData['silver_is_positive'] ?? true,
       ],
     ];
     $firstMetal = $metalItems[0];
   @endphp
-  <div class="widget-box stock-market-widget gold-silver-widget" id="gold-silver-widget" style="margin-bottom: 14px;">
-    <div class="widget-title stock-widget-header" style="margin-bottom: 8px;">
+  <div class="widget-box stock-market-widget gold-silver-widget" id="gold-silver-widget">
+    <div class="widget-title stock-widget-header">
       <span><i class="fas fa-coins" style="color: #eab308;"></i> সোনা ও রূপোর দর (Gold & Silver)</span>
       <div class="stock-header-controls">
         <span class="stock-live-badge"><span class="stock-live-dot"></span> লাইভ</span>
@@ -105,77 +105,77 @@
     </div>
 
     <!-- Metal Snapshot Mini Cards (Gold 24K & Silver 1kg) -->
-    <div class="stock-indices-grid" style="margin-bottom: 8px; gap: 6px;">
-      <div class="stock-index-card" style="padding: 6px 8px; border-top: 2px solid #eab308;">
-        <div class="index-meta" style="margin-bottom: 2px;">
-          <span class="index-name" style="font-size: 0.72rem;">২৪K সোনা (১০ গ্রাম)</span>
-          <span class="index-change {{ ($goldSilverData['gold_is_positive'] ?? true) ? 'positive' : 'negative' }}" style="font-size: 0.68rem;">
+    <div class="stock-indices-grid">
+      <div class="stock-index-card" style="border-top: 3px solid #eab308;">
+        <div class="index-meta">
+          <span class="index-name">২৪K সোনা (১০ গ্রাম)</span>
+          <span class="index-change {{ ($goldSilverData['gold_is_positive'] ?? true) ? 'positive' : 'negative' }}">
             {{ ($goldSilverData['gold_is_positive'] ?? true) ? '▲' : '▼' }} {{ $goldSilverData['gold_change_percent_formatted'] ?? '+০.৫৪%' }}
           </span>
         </div>
-        <div class="index-price" style="color: #eab308; font-size: 1.02rem; font-weight: 800;">₹{{ $goldSilverData['gold_24k_formatted'] ?? '৭৭,২৬০' }}</div>
+        <div class="index-price" style="color: #eab308;">₹{{ $goldSilverData['gold_24k_formatted'] ?? '৭৭,২৬০' }}</div>
       </div>
-      <div class="stock-index-card" style="padding: 6px 8px; border-top: 2px solid #94a3b8;">
-        <div class="index-meta" style="margin-bottom: 2px;">
-          <span class="index-name" style="font-size: 0.72rem;">রূপো (১ কেজি)</span>
-          <span class="index-change {{ ($goldSilverData['silver_is_positive'] ?? true) ? 'positive' : 'negative' }}" style="font-size: 0.68rem;">
+      <div class="stock-index-card" style="border-top: 3px solid #94a3b8;">
+        <div class="index-meta">
+          <span class="index-name">রূপো (১ কেজি)</span>
+          <span class="index-change {{ ($goldSilverData['silver_is_positive'] ?? true) ? 'positive' : 'negative' }}">
             {{ ($goldSilverData['silver_is_positive'] ?? true) ? '▲' : '▼' }} {{ $goldSilverData['silver_change_percent_formatted'] ?? '+১.২৫%' }}
           </span>
         </div>
-        <div class="index-price" style="color: #38bdf8; font-size: 1.02rem; font-weight: 800;">₹{{ $goldSilverData['silver_1kg_formatted'] ?? '৯৫,৬৮০' }}</div>
+        <div class="index-price" style="color: #38bdf8;">₹{{ $goldSilverData['silver_1kg_formatted'] ?? '৯৫,৬৮০' }}</div>
       </div>
     </div>
 
-    <!-- Animated Spotlight Rotating Featured Metal Card (Locked Height & Ellipsis to Prevent Jumping) -->
-    <div class="stock-spotlight-card metal-spotlight-card" id="metal-spotlight-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); margin-bottom: 8px; padding: 8px 10px 6px 10px; height: 74px; min-height: 74px; max-height: 74px; box-sizing: border-box; overflow: hidden;">
+    <!-- Animated Spotlight Rotating Featured Metal Card -->
+    <div class="stock-spotlight-card metal-spotlight-card" id="metal-spotlight-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); min-height: 86px;">
       <div class="spotlight-progress-bar">
         <div class="spotlight-progress-fill" id="metal-spotlight-progress" style="background: linear-gradient(90deg, #eab308, #f59e0b, #38bdf8);"></div>
       </div>
-      <div class="spotlight-header" style="margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
-        <div class="spotlight-company" style="min-width: 0; flex: 1; display: flex; align-items: center; gap: 6px; overflow: hidden;">
-          <span class="spotlight-rank" id="metal-spotlight-rank" style="background: {{ $firstMetal['rank_bg'] }}; color: {{ $firstMetal['rank_color'] }}; font-weight: 800; display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 0.72rem; flex-shrink: 0;">
-            <i class="{{ $firstMetal['icon'] }}"></i> <span>{{ $firstMetal['rank'] }}</span>
+      <div class="spotlight-header">
+        <div class="spotlight-company">
+          <span class="spotlight-rank" id="metal-spotlight-rank" style="background: {{ $firstMetal['rank_bg'] }}; color: {{ $firstMetal['rank_color'] }}; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); flex-shrink: 0;">
+            <i class="{{ $firstMetal['icon'] }}"></i>
           </span>
-          <div style="min-width: 0; flex: 1; overflow: hidden;">
-            <div class="spotlight-symbol" id="metal-spotlight-symbol" style="color: #ffffff; font-size: 0.88rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;">{{ $firstMetal['symbol'] }}</div>
-            <div class="spotlight-name" id="metal-spotlight-name" style="color: #94a3b8; font-size: 0.70rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;">{{ $firstMetal['name'] }}</div>
+          <div>
+            <div class="spotlight-symbol" id="metal-spotlight-symbol">{{ $firstMetal['symbol'] }}</div>
+            <div class="spotlight-name" id="metal-spotlight-name">{{ $firstMetal['name'] }}</div>
           </div>
         </div>
-        <div class="spotlight-badge {{ $firstMetal['is_positive'] ? 'positive' : 'negative' }}" id="metal-spotlight-badge" style="font-size: 0.70rem; padding: 2px 6px; flex-shrink: 0; margin-left: 6px;">
+        <div class="spotlight-badge {{ $firstMetal['is_positive'] ? 'positive' : 'negative' }}" id="metal-spotlight-badge">
           <i class="fas {{ $firstMetal['is_positive'] ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down' }}"></i> {{ $firstMetal['badge'] }}
         </div>
       </div>
-      <div class="spotlight-footer" style="padding-top: 4px; display: flex; justify-content: space-between; align-items: baseline;">
-        <span class="spotlight-label" id="metal-spotlight-footer-label" style="font-size: 0.72rem;">{!! $firstMetal['sub_label'] !!}</span>
-        <span class="spotlight-price" id="metal-spotlight-price" style="font-size: 1.12rem; color: #fbbf24; font-weight: 800;">
-          {{ $firstMetal['price'] }} <span id="metal-spotlight-unit" style="font-size: 0.68rem; font-weight: 500; color: #cbd5e1;">{{ $firstMetal['unit'] }}</span>
+      <div class="spotlight-footer">
+        <span class="spotlight-label" id="metal-spotlight-footer-label">{!! $firstMetal['sub_label'] !!}</span>
+        <span class="spotlight-price" id="metal-spotlight-price" style="color: #fbbf24;">
+          {{ $firstMetal['price'] }} <span id="metal-spotlight-unit" style="font-size: 0.75rem; font-weight: 500; color: #cbd5e1;">{{ $firstMetal['unit'] }}</span>
         </span>
       </div>
     </div>
 
     <!-- Filter Tabs (সব ধাতু, সোনা, রূপো) -->
-    <div class="stock-filter-tabs metal-filter-tabs" style="margin-bottom: 6px; padding: 2px; gap: 3px;">
-      <button type="button" class="stock-tab-btn metal-tab-btn active" data-metal-filter="all" style="padding: 3px 6px; font-size: 0.72rem;">সব দর</button>
-      <button type="button" class="stock-tab-btn metal-tab-btn" data-metal-filter="gold" style="padding: 3px 6px; font-size: 0.72rem;">সোনা (Gold)</button>
-      <button type="button" class="stock-tab-btn metal-tab-btn" data-metal-filter="silver" style="padding: 3px 6px; font-size: 0.72rem;">রূপো (Silver)</button>
+    <div class="stock-filter-tabs metal-filter-tabs">
+      <button type="button" class="stock-tab-btn metal-tab-btn active" data-metal-filter="all">সব দর</button>
+      <button type="button" class="stock-tab-btn metal-tab-btn" data-metal-filter="gold">সোনা (Gold)</button>
+      <button type="button" class="stock-tab-btn metal-tab-btn" data-metal-filter="silver">রূপো (Silver)</button>
     </div>
 
-    <!-- Metal Rates List with synchronized highlight & click/hover -->
-    <div class="stock-list-container" id="metal-list-container" style="max-height: 180px;">
+    <!-- Metal Rates List with synchronized highlight & scroll -->
+    <div class="stock-list-container" id="metal-list-container" style="max-height: 130px; overflow-y: auto;">
       @foreach($metalItems as $idx => $mItem)
-        <div class="stock-item-row metal-item-row {{ $idx === 0 ? 'spotlight-active' : '' }}" data-metal-idx="{{ $idx }}" data-metal="{{ $mItem['type'] }}" style="padding: 4px 8px; margin-bottom: 2px; min-height: 33px;">
-          <div class="stock-item-left" style="gap: 6px; min-width: 0; flex: 1;">
-            <span class="stock-item-rank metal-circle-icon" style="width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: {{ $mItem['rank_bg'] }}; color: {{ $mItem['rank_color'] }}; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
-              <i class="{{ $mItem['icon'] }}" style="font-size: 0.68rem;"></i>
+        <div class="stock-item-row metal-item-row {{ $idx === 0 ? 'spotlight-active' : '' }}" data-metal-idx="{{ $idx }}" data-metal="{{ $mItem['type'] }}">
+          <div class="stock-item-left">
+            <span class="stock-item-rank metal-circle-icon" style="width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: {{ $mItem['rank_bg'] }}; color: {{ $mItem['rank_color'] }}; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+              <i class="{{ $mItem['icon'] }}" style="font-size: 0.76rem;"></i>
             </span>
-            <div class="stock-item-info" style="min-width: 0; overflow: hidden;">
-              <span class="stock-item-symbol" style="font-size: 0.78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $mItem['symbol'] }}</span>
-              <span class="stock-item-name" style="font-size: 0.66rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{!! $mItem['sub_label'] !!}</span>
+            <div class="stock-item-info">
+              <span class="stock-item-symbol">{{ $mItem['symbol'] }}</span>
+              <span class="stock-item-name">{!! $mItem['sub_label'] !!}</span>
             </div>
           </div>
-          <div class="stock-item-right" style="gap: 5px; flex-shrink: 0;">
-            <span class="stock-item-price" style="font-size: 0.82rem; font-weight: 700; {{ $mItem['type'] === 'silver' ? 'color: #0284c7;' : '' }}">{{ $mItem['price'] }}</span>
-            <span class="stock-change-pill {{ $mItem['is_positive'] ? 'positive' : 'negative' }}" style="font-size: 0.66rem; padding: 1px 5px;">
+          <div class="stock-item-right">
+            <span class="stock-item-price" style="{{ $mItem['type'] === 'silver' ? 'color: #0284c7;' : '' }}">{{ $mItem['price'] }}</span>
+            <span class="stock-change-pill {{ $mItem['is_positive'] ? 'positive' : 'negative' }}">
               <i class="fas {{ $mItem['is_positive'] ? 'fa-arrow-trend-up' : 'fa-arrow-trend-down' }}"></i> {{ $mItem['badge'] }}
             </span>
           </div>
@@ -184,10 +184,10 @@
     </div>
 
     <!-- Footer -->
-    <div class="stock-widget-footer" style="margin-top: 6px; padding-top: 4px;">
-      <span class="stock-status-text" style="color: var(--text-muted); font-size: 0.72rem;"><i class="fas fa-map-marker-alt" style="color: #ef4444;"></i> কলকাতা ও পশ্চিমবঙ্গ</span>
-      <a href="{{ route('market.rates') }}" class="stock-updated-text" style="color: var(--brand-red); font-weight: 700; font-size: 0.72rem; text-decoration: none;">
-        সম্পূর্ণ চার্ট <i class="fas fa-arrow-right" style="font-size: 0.65rem;"></i>
+    <div class="stock-widget-footer">
+      <span class="stock-status-text"><i class="fas fa-map-marker-alt" style="color: #ef4444;"></i> কলকাতা ও পশ্চিমবঙ্গ</span>
+      <a href="{{ route('market.rates') }}" class="stock-updated-text" style="color: var(--brand-red); font-weight: 700; text-decoration: none;">
+        সম্পূর্ণ চার্ট <i class="fas fa-arrow-right" style="font-size: 0.7rem;"></i>
       </a>
     </div>
   </div>
@@ -234,22 +234,22 @@
         currentIdx = idx;
 
         if (withAnimation) {
-          spotlightCard.style.transition = 'opacity 0.18s ease';
-          spotlightCard.style.opacity = '0.75';
+          spotlightCard.style.transition = 'opacity 0.2s ease';
+          spotlightCard.style.opacity = '0.7';
           setTimeout(() => {
             spotlightCard.style.opacity = '1';
-          }, 90);
+          }, 100);
         }
 
         if (spotlightRank) {
-          spotlightRank.innerHTML = '<i class="' + item.icon + '" style="margin-right: 4px;"></i> <span>' + item.rank + '</span>';
+          spotlightRank.innerHTML = '<i class="' + item.icon + '"></i>';
           spotlightRank.style.background = item.rank_bg;
           spotlightRank.style.color = item.rank_color;
         }
         if (spotlightSymbol) spotlightSymbol.textContent = item.symbol;
         if (spotlightName) spotlightName.textContent = item.name;
         if (spotlightPrice) {
-          spotlightPrice.innerHTML = item.price + ' <span id="metal-spotlight-unit" style="font-size: 0.72rem; font-weight: 500; color: #cbd5e1;">' + item.unit + '</span>';
+          spotlightPrice.innerHTML = item.price + ' <span id="metal-spotlight-unit" style="font-size: 0.75rem; font-weight: 500; color: #cbd5e1;">' + item.unit + '</span>';
         }
         if (spotlightFooterLabel) spotlightFooterLabel.innerHTML = item.sub_label;
 
@@ -259,15 +259,25 @@
           spotlightBadge.className = 'spotlight-badge ' + (item.is_positive ? 'positive' : 'negative');
         }
 
-        // Highlight active row in list
+        // Highlight active row in list and auto-scroll smoothly inside container
         metalRows.forEach(row => {
           if (parseInt(row.getAttribute('data-metal-idx'), 10) === idx) {
             row.classList.add('spotlight-active');
+            if (metalList) {
+              const rowTop = row.offsetTop;
+              const rowBottom = rowTop + row.offsetHeight;
+              if (rowTop < metalList.scrollTop) {
+                metalList.scrollTop = rowTop;
+              } else if (rowBottom > metalList.scrollTop + metalList.clientHeight) {
+                metalList.scrollTop = rowBottom - metalList.clientHeight;
+              }
+            }
           } else {
             row.classList.remove('spotlight-active');
           }
         });
       }
+
 
       function startRotation() {
         if (rotationInterval) clearInterval(rotationInterval);
