@@ -13,7 +13,8 @@
       [
         'id' => 0,
         'type' => 'gold',
-        'rank' => '২৪K',
+        'icon' => 'fas fa-coins',
+        'rank' => '২৪K সোনা',
         'rank_bg' => '#eab308',
         'rank_color' => '#000000',
         'border_color' => '#eab308',
@@ -28,7 +29,8 @@
       [
         'id' => 1,
         'type' => 'gold',
-        'rank' => '২২K',
+        'icon' => 'fas fa-gem',
+        'rank' => '২২K সোনা',
         'rank_bg' => '#f59e0b',
         'rank_color' => '#ffffff',
         'border_color' => '#f59e0b',
@@ -43,7 +45,8 @@
       [
         'id' => 2,
         'type' => 'gold',
-        'rank' => '১৮K',
+        'icon' => 'fas fa-medal',
+        'rank' => '১৮K সোনা',
         'rank_bg' => '#8b5cf6',
         'rank_color' => '#ffffff',
         'border_color' => '#8b5cf6',
@@ -58,7 +61,8 @@
       [
         'id' => 3,
         'type' => 'silver',
-        'rank' => 'কেজি',
+        'icon' => 'fas fa-cube',
+        'rank' => '১ কেজি রূপো',
         'rank_bg' => '#38bdf8',
         'rank_color' => '#000000',
         'border_color' => '#38bdf8',
@@ -73,7 +77,8 @@
       [
         'id' => 4,
         'type' => 'silver',
-        'rank' => '১০g',
+        'icon' => 'fas fa-ring',
+        'rank' => '১০ গ্রাম রূপো',
         'rank_bg' => '#94a3b8',
         'rank_color' => '#ffffff',
         'border_color' => '#94a3b8',
@@ -122,14 +127,14 @@
     </div>
 
     <!-- Animated Spotlight Rotating Featured Metal Card -->
-    <div class="stock-spotlight-card metal-spotlight-card" id="metal-spotlight-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); border-top: 3px solid {{ $firstMetal['border_color'] }}; margin-bottom: 10px;">
+    <div class="stock-spotlight-card metal-spotlight-card" id="metal-spotlight-card" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0f172a 100%); margin-bottom: 10px;">
       <div class="spotlight-progress-bar">
         <div class="spotlight-progress-fill" id="metal-spotlight-progress" style="background: linear-gradient(90deg, #eab308, #f59e0b, #38bdf8);"></div>
       </div>
       <div class="spotlight-header" style="margin-bottom: 6px;">
         <div class="spotlight-company">
-          <span class="spotlight-rank" id="metal-spotlight-rank" style="background: {{ $firstMetal['rank_bg'] }}; color: {{ $firstMetal['rank_color'] }}; font-weight: 800;">
-            {{ $firstMetal['rank'] }}
+          <span class="spotlight-rank" id="metal-spotlight-rank" style="background: {{ $firstMetal['rank_bg'] }}; color: {{ $firstMetal['rank_color'] }}; font-weight: 800; display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 4px;">
+            <i class="{{ $firstMetal['icon'] }}"></i> <span>{{ $firstMetal['rank'] }}</span>
           </span>
           <div style="min-width: 0;">
             <div class="spotlight-symbol" id="metal-spotlight-symbol" style="color: #ffffff;">{{ $firstMetal['symbol'] }}</div>
@@ -160,8 +165,8 @@
       @foreach($metalItems as $idx => $mItem)
         <div class="stock-item-row metal-item-row {{ $idx === 0 ? 'spotlight-active' : '' }}" data-metal-idx="{{ $idx }}" data-metal="{{ $mItem['type'] }}">
           <div class="stock-item-left">
-            <span class="stock-item-rank" style="background: {{ $mItem['rank_bg'] }}; color: {{ $mItem['rank_color'] }}; font-weight: 800;">
-              {{ $mItem['rank'] }}
+            <span class="stock-item-rank metal-circle-icon" style="width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: {{ $mItem['rank_bg'] }}; color: {{ $mItem['rank_color'] }}; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+              <i class="{{ $mItem['icon'] }}" style="font-size: 0.76rem;"></i>
             </span>
             <div class="stock-item-info">
               <span class="stock-item-symbol">{{ $mItem['symbol'] }}</span>
@@ -238,9 +243,8 @@
           }, 120);
         }
 
-        spotlightCard.style.borderTopColor = item.border_color;
         if (spotlightRank) {
-          spotlightRank.textContent = item.rank;
+          spotlightRank.innerHTML = '<i class="' + item.icon + '" style="margin-right: 4px;"></i> <span>' + item.rank + '</span>';
           spotlightRank.style.background = item.rank_bg;
           spotlightRank.style.color = item.rank_color;
         }
