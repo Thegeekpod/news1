@@ -41,6 +41,9 @@ Route::get('/market/top-stocks', [MarketController::class, 'getTopStocks'])->nam
 Route::get('/market', [MarketController::class, 'index'])->name('market.rates');
 Route::get('/market-rates', [MarketController::class, 'index']);
 Route::get('/gold-silver-sensex', [MarketController::class, 'index']);
+Route::get('/aajker-sonar-dam-kolkata', [MarketController::class, 'index'])->name('market.gold');
+Route::get('/aajker-rupor-dam-kolkata', [MarketController::class, 'index'])->name('market.silver');
+Route::get('/aajker-sensex-nifty-update', [MarketController::class, 'index'])->name('market.stocks');
 
 // Single Unified Dynamic XML Sitemap (/sitemap-1.xml)
 Route::get('/sitemap-1.xml', [SitemapController::class, 'index'])->name('sitemap.index');

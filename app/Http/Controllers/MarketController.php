@@ -20,17 +20,17 @@ class MarketController extends Controller
             'yahoo_symbol' => 'RELIANCE.NS',
             'name_bn' => 'রিলায়েন্স ইন্ডাস্ট্রিজ',
             'name_en' => 'Reliance Industries',
-            'base_price' => 1279.00,
-            'base_change' => 15.40,
-            'base_percent' => 1.22,
+            'base_price' => 1279.27,
+            'base_change' => 15.51,
+            'base_percent' => 1.23,
         ],
         [
             'symbol' => 'TCS',
             'yahoo_symbol' => 'TCS.NS',
             'name_bn' => 'টিসিএস (TCS)',
             'name_en' => 'Tata Consultancy Services',
-            'base_price' => 2208.00,
-            'base_change' => -14.50,
+            'base_price' => 2208.14,
+            'base_change' => -14.44,
             'base_percent' => -0.65,
         ],
         [
@@ -38,17 +38,17 @@ class MarketController extends Controller
             'yahoo_symbol' => 'HDFCBANK.NS',
             'name_bn' => 'এইচডিএফসি ব্যাঙ্ক',
             'name_en' => 'HDFC Bank',
-            'base_price' => 1687.10,
+            'base_price' => 1687.11,
             'base_change' => 18.30,
             'base_percent' => 1.10,
         ],
         [
             'symbol' => 'BHARTIARTL',
             'yahoo_symbol' => 'BHARTIARTL.NS',
-            'name_bn' => 'ভারতী এয়ারটেল',
+            'name_bn' => 'ভারতী এয়ারটেল',
             'name_en' => 'Bharti Airtel',
-            'base_price' => 1814.70,
-            'base_change' => 24.10,
+            'base_price' => 1814.90,
+            'base_change' => 24.18,
             'base_percent' => 1.35,
         ],
         [
@@ -56,8 +56,8 @@ class MarketController extends Controller
             'yahoo_symbol' => 'ICICIBANK.NS',
             'name_bn' => 'আইসিআইসিআই ব্যাঙ্ক',
             'name_en' => 'ICICI Bank',
-            'base_price' => 1389.10,
-            'base_change' => 11.20,
+            'base_price' => 1389.12,
+            'base_change' => 11.21,
             'base_percent' => 0.81,
         ],
         [
@@ -65,17 +65,17 @@ class MarketController extends Controller
             'yahoo_symbol' => 'INFY.NS',
             'name_bn' => 'ইনফোসিস লিমিটেড',
             'name_en' => 'Infosys',
-            'base_price' => 1535.00,
-            'base_change' => -8.40,
+            'base_price' => 1535.14,
+            'base_change' => -8.34,
             'base_percent' => -0.54,
         ],
         [
             'symbol' => 'SBIN',
             'yahoo_symbol' => 'SBIN.NS',
-            'name_bn' => 'স্টেট ব্যাঙ্ক অফ ইন্ডিয়া',
+            'name_bn' => 'স্টেট ব্যাঙ্ক অফ ইন্ডিয়া',
             'name_en' => 'State Bank of India',
-            'base_price' => 825.50,
-            'base_change' => 6.80,
+            'base_price' => 825.58,
+            'base_change' => 6.83,
             'base_percent' => 0.83,
         ],
         [
@@ -83,17 +83,17 @@ class MarketController extends Controller
             'yahoo_symbol' => 'ITC.NS',
             'name_bn' => 'আইটিসি লিমিটেড',
             'name_en' => 'ITC Limited',
-            'base_price' => 460.80,
-            'base_change' => 3.20,
-            'base_percent' => 0.70,
+            'base_price' => 460.90,
+            'base_change' => 3.24,
+            'base_percent' => 0.71,
         ],
         [
             'symbol' => 'LT',
             'yahoo_symbol' => 'LT.NS',
             'name_bn' => 'লারসেন অ্যান্ড টুব্রো',
             'name_en' => 'Larsen & Toubro',
-            'base_price' => 3622.60,
-            'base_change' => -21.50,
+            'base_price' => 3622.57,
+            'base_change' => -21.51,
             'base_percent' => -0.59,
         ],
         [
@@ -101,8 +101,8 @@ class MarketController extends Controller
             'yahoo_symbol' => 'TATAMOTORS.NS',
             'name_bn' => 'টাটা মোটরস',
             'name_en' => 'Tata Motors',
-            'base_price' => 985.40,
-            'base_change' => 18.60,
+            'base_price' => 985.28,
+            'base_change' => 18.55,
             'base_percent' => 1.92,
         ],
     ];
@@ -111,8 +111,8 @@ class MarketController extends Controller
      * Major Indices
      */
     public static $defaultIndices = [
-        ['symbol' => 'NIFTY 50', 'yahoo' => '%5ENSEI', 'name_bn' => 'নিফটি ৫০', 'base' => 23430.00, 'base_chg' => 110.50, 'base_pct' => 0.47],
-        ['symbol' => 'SENSEX', 'yahoo' => '%5EBSESN', 'name_bn' => 'সেনসেক্স', 'base' => 77150.00, 'base_chg' => 340.20, 'base_pct' => 0.44],
+        ['symbol' => 'NIFTY 50', 'yahoo' => '%5ENSEI', 'name_bn' => 'নিফটি ৫০', 'base' => 23140.50, 'base_chg' => 77.40, 'base_pct' => 0.34],
+        ['symbol' => 'SENSEX', 'yahoo' => '%5EBSESN', 'name_bn' => 'সেনসেক্স', 'base' => 73895.74, 'base_chg' => 315.20, 'base_pct' => 0.43],
     ];
 
     /**
@@ -121,36 +121,36 @@ class MarketController extends Controller
     public static function getDefaultRates(): array
     {
         return [
-            'gold_24k' => 76850,
-            'gold_22k' => 70450,
-            'gold_18k' => 57640,
-            'gold_change' => 350,
-            'gold_change_percent' => 0.46,
+            'gold_24k' => 77260,
+            'gold_22k' => 70820,
+            'gold_18k' => 57950,
+            'gold_change' => 410,
+            'gold_change_percent' => 0.54,
             'gold_is_positive' => true,
 
-            'silver_1kg' => 94500,
-            'silver_10g' => 945,
-            'silver_change' => 450,
-            'silver_change_percent' => 0.48,
+            'silver_1kg' => 95680,
+            'silver_10g' => 957,
+            'silver_change' => 1180,
+            'silver_change_percent' => 1.25,
             'silver_is_positive' => true,
 
             'sensex' => [
-                'price' => 77150.00,
-                'change' => 340.20,
-                'change_percent' => 0.44,
+                'price' => 73895.74,
+                'change' => 315.20,
+                'change_percent' => 0.43,
                 'is_positive' => true,
-                'price_formatted' => '৭৭,১৫০',
-                'change_formatted' => '+৩৪০.২০',
-                'change_percent_formatted' => '+০.৪৪%',
+                'price_formatted' => '৭৩,৮৯৫.৭৪',
+                'change_formatted' => '+৩১৫.২০',
+                'change_percent_formatted' => '+০.৪৩%',
             ],
             'nifty' => [
-                'price' => 23430.00,
-                'change' => 110.50,
-                'change_percent' => 0.47,
+                'price' => 23140.50,
+                'change' => 77.40,
+                'change_percent' => 0.34,
                 'is_positive' => true,
-                'price_formatted' => '২৩,৪৩০',
-                'change_formatted' => '+১১০.৫০',
-                'change_percent_formatted' => '+০.৪৭%',
+                'price_formatted' => '২৩,১৪০.৫০',
+                'change_formatted' => '+৭৭.৪০',
+                'change_percent_formatted' => '+০.৩৪%',
             ],
             'last_updated' => now()->toIso8601String(),
             'last_updated_bn' => BengaliHelper::toBengaliDate(now()) . ' ' . BengaliHelper::toBengaliTime(now()),
@@ -191,7 +191,7 @@ class MarketController extends Controller
         }
 
         // 2. Gold 24K, 22K, 18K calculation based on Indian Retail Market (Kolkata) with Live Daily Fluctuation
-        $baseGold24k = (float) Setting::get('market_base_gold_24k', 76850);
+        $baseGold24k = (float) Setting::get('market_base_gold_24k', 77260);
         $goldChangePercent = $defaults['gold_change_percent'];
 
         if (isset($responses['gold']) && $responses['gold'] instanceof \Illuminate\Http\Client\Response && $responses['gold']->successful()) {
@@ -212,7 +212,7 @@ class MarketController extends Controller
         $gold22kPerBhori = round(($gold22k / 10) * 8, -1); // 8 grams = 1 Bhori / Tola standard jewelry unit
 
         // 3. Silver 1kg and 10g calculation based on Indian Retail Market with Live Daily Fluctuation
-        $baseSilver1kg = (float) Setting::get('market_base_silver_1kg', 94500);
+        $baseSilver1kg = (float) Setting::get('market_base_silver_1kg', 95680);
         $silverChangePercent = $defaults['silver_change_percent'];
 
         if (isset($responses['silver']) && $responses['silver'] instanceof \Illuminate\Http\Client\Response && $responses['silver']->successful()) {
@@ -384,6 +384,12 @@ class MarketController extends Controller
         $marketData = self::getMarketData();
         $topStocksData = $this->fetchConcurrentQuotes();
 
+        // Identify Top Gainer and Top Loser for dynamic market analysis
+        $stocks = $topStocksData['stocks'] ?? [];
+        $sortedStocks = collect($stocks);
+        $topGainer = $sortedStocks->sortByDesc('change_percent')->first();
+        $topLoser = $sortedStocks->sortBy('change_percent')->first();
+
         // City-wise Gold Price Comparison (Estimated variance based on local taxes and logistics)
         $cityRates = [
             [
@@ -416,7 +422,7 @@ class MarketController extends Controller
             ],
         ];
 
-        return view('market.index', compact('marketData', 'topStocksData', 'cityRates'));
+        return view('market.index', compact('marketData', 'topStocksData', 'cityRates', 'topGainer', 'topLoser'));
     }
 
     /**
